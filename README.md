@@ -25,12 +25,20 @@ Cada archivo de `knowledge/` es un manual operativo destilado de fuentes reales 
 
 ## Estado
 
+**Bloque A — Juegos + Unity**
 - ✅ Fase 0 — Esqueleto del plugin
 - ✅ Fase 1 — Conocimiento de videojuegos en general (14 archivos + índice, fuentes citadas)
 - 🔨 Fase 2 — Conocimiento de Unity
 - ⬜ Fase 3 — El pipeline unido (juegos + Unity)
-- ⬜ Fase 4 — Ensamblaje: agente director + skills + commands
-- ♾️ Fase 5 — Mejora continua
+- ⬜ Fase 4 — Ensamblaje v1: agente director + skills + commands
+
+**Bloque B — Arte 3D con Blender**
+- ⬜ Fases 5–12 — Modelado 3D → Blender (incl. addons, bpy, blender-mcp) → modelado en Blender → texturizado → rigging → animación → animación en Blender → pipeline de assets Blender↔Unity
+
+**Bloque C — Transversal**
+- ⬜ Fase 13 — Diseño UX/UI general · ⬜ Fase 14 — Equipo de agentes completo · ♾️ Mejora continua
+
+Detalle completo en [PLAN.md](PLAN.md).
 
 ## Instalación
 

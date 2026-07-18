@@ -49,13 +49,72 @@ Mismo proceso. Temas previstos (~14): arquitectura (GameObjects/prefabs/lifecycl
 ### ⬜ Fase 3 — La unión (`knowledge/pipeline/`)
 De idea a juego terminado EN Unity (~11): pipeline completo por milestones, recetas por género, estructura de proyecto, arte→Unity, juice en Unity (recetas de código), UI/flujo completo, narrativa en Unity + localización, sistemas meta (save, economía, IAP/ads), multijugador/netcode, testing/QA, producción solo-dev. (Cubre los huecos globales que la fase 1 detectó: netcode, QA técnico, i18n; programación/arquitectura y git/CI van en fase 2.)
 
-### ⬜ Fase 4 — Ensamblaje
+### ⬜ Fase 4 — Ensamblaje v1
 - `agents/director.md` completo: enruta por tarea, carga conocimiento por índice.
 - Skills: `/nuevo-juego` (idea→GDD→scaffold), `/receta` (género→plan Unity), `/juice-pass`, `/ship-check`…
 - Instalación local vía marketplace propio y prueba real: crear un mini-juego usando SOLO el plugin.
 
-### ♾️ Fase 5 — Mejora continua
-Cada juego real que se haga con el plugin retroalimenta el conocimiento (nuevos pitfalls, recetas probadas).
+## Bloque B — Arte 3D con Blender (ampliación 2026-07-18)
+
+Mismo patrón de tres pasos (general → herramienta → unión) aplicado al arte 3D. Orden:
+
+### ⬜ Fase 5 — Modelado 3D general (`knowledge/modelado/`)
+Teoría agnóstica de herramienta: topología (quads, edge flow, poles), hard-surface vs orgánico, high-poly→low-poly y normal baking, presupuestos de polígonos por plataforma, escala y proporción, y **las categorías de modelo con su método propio**: props/cosas, estructuras/entornos (modular kits), personajes, vehículos, armas. Incluye **blueprints**: referencias ortográficas (front/side/top) — conseguirlas, hacerlas y montarlas para modelar encima.
+
+### ⬜ Fase 6 — Blender: la herramienta (`knowledge/blender/`)
+Blender 5.x a fondo: interfaz/atajos/workflow, edit mode y herramientas de malla, modificadores (el stack canónico), geometry nodes, sculpting, **el ecosistema open source**: addons famosos y cuáles valen (gratis y de pago), la API Python (bpy), cómo escribir addons propios / modificar Blender, extensiones oficiales. Y **la conexión para agentes**: blender-mcp (operar Blender desde el plugin, igual que Unity MCP).
+
+### ⬜ Fase 7 — Unión: modelado EN Blender
+Recetas por categoría: modelar un prop, un kit modular de entorno, un personaje, un vehículo, un arma — game-ready (low-poly, topología limpia), de referencia/blueprint a malla terminada.
+
+### ⬜ Fase 8 — Texturizado (`knowledge/texturizado/`)
+UV unwrapping (seams, packing, texel density), PBR (albedo/metallic/roughness/normal), baking high→low, texturizado en Blender (painting, procedural con nodos), estilos (stylized vs realista), atlas y trim sheets, export correcto a Unity/URP.
+
+### ⬜ Fase 9 — Rigging (`knowledge/rigging/`)
+Esqueletos: jerarquía de huesos, weights/skinning limpio, IK/FK, Rigify y rigs game-ready, deformación correcta (hombros, caderas), rigs de props/vehículos/armas, export a Unity (Humanoid vs Generic, retargeting).
+
+### ⬜ Fase 10 — Animación 3D general (`knowledge/animacion3d/`)
+De los 12 principios (ya en gamedev/animacion) al nivel producción 3D: ciclos (walk/run/idle), animación de combate para juegos, keyframes/curvas/interpolación, mocap básico y librerías (Mixamo etc.), animación por capas.
+
+### ⬜ Fase 11 — Unión: animación EN Blender
+Action editor, NLA, graph editor en la práctica; animar el personaje riggeado; export de clips a Unity/Mecanim sin dolores (escala, rotaciones, root motion).
+
+### ⬜ Fase 12 — Pipeline de assets completo + aprender de assets existentes
+Blender↔Unity de punta a punta (FBX/glTF, escalas, ejes, materiales, colliders). Y la skill **/aprender-asset**: Michael le pasa un asset de Unity (FBX, prefab, atlas, material) y el agente lo analiza — polycount, topología, texel density, convenciones de nombres, rig — y destila sus convenciones para replicar el estilo.
+
+## Bloque C — Transversal
+
+### ⬜ Fase 13 — Diseño UX/UI (`knowledge/ux-ui/`)
+Diseño de interfaces en general (no solo juegos): fundamentos (jerarquía, tipografía, color, espaciado, grids), sistemas de diseño, patrones de apps web/móvil, accesibilidad, herramientas y handoff. Complementa gamedev/ux-ui-onboarding (que es de juegos).
+
+### ⬜ Fase 14 — Ensamblaje v2: el equipo de agentes
+Roster previsto (cada agente = un rol que carga SU parte del conocimiento; sin override de modelo):
+| Agente | Rol | Conocimiento que carga |
+|---|---|---|
+| `director` | Orquesta todo, decide, GDD, scope | índices + gamedev/preproduccion |
+| `disenador` | Mecánicas, balance, niveles, feel | gamedev/* |
+| `ingeniero` | Implementa en Unity/C#, opera Unity MCP | unity/* + pipeline/* |
+| `artista-3d` | Modela y texturiza, opera blender-mcp | modelado/blender/texturizado |
+| `animador` | Rigging + animación | rigging/animacion3d |
+| `ux-ui` | Interfaces, HUD, onboarding, arte 2D de UI | ux-ui + gamedev/arte-direccion |
+| `qa` | Audita: feel pass, rendimiento, checklist de ship; no se auto-aprueba | gotchas + reglas prácticas de todos |
+
+### ♾️ Mejora continua
+Cada juego real retroalimenta el conocimiento (pitfalls nuevos, recetas probadas). Los huecos que un agente reporte ("necesitaba X y no estaba") se convierten en investigación.
+
+## Ideas propuestas (pendientes de OK de Michael)
+
+- **Arte 2D / pixel art** (`knowledge/arte2d/`): sprites, pixel art, Aseprite, spritesheets/atlas, animación 2D frame a frame — la mayoría de los juegos chicos son 2D y el bloque B es 3D.
+- **VFX y shaders**: Shader Graph con recetas (disolve, hit flash, outline, agua), partículas/VFX Graph, el "juice visual" a nivel implementación.
+- **Creación de audio**: generar SFX (jsfxr/ChipTone), música con herramientas e IA, grabación casera — la fase 1 cubre teoría, no producción.
+- **IA generativa para assets**: cuándo y cómo usar generación de imagen/3D/audio, con licencias claras, y sus límites de calidad.
+- **Memoria por juego**: el plugin mantiene GDD + CHECKPOINT + decisiones de cada juego para retomar en cualquier sesión sin perder contexto.
+- **QA automatizado de juegos**: Unity Test Framework + tests de gameplay + smoke tests de builds.
+
+## Infra local (Mac de Michael)
+
+- Blender: 4.3.0 viejo pendiente de borrar (es de la cuenta `jeanmichaelhiraldopimentel`, requiere sudo de Michael); Blender 5.2.0 ya descargado vía brew cask, listo para instalar. Config de usuario 4.2/4.3 se conserva.
+- blender-mcp: instalar cuando arranque el bloque B.
 
 ## Decisiones tomadas
 
