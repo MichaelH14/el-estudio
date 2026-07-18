@@ -21,8 +21,8 @@ Un modelo menos capaz + un manual perfecto ≥ un modelo más capaz sin manual. 
 ### ✅ Fase 0 — Esqueleto
 Estructura del plugin (formato calcado de El Coro), repo público en MichaelH14, plan.
 
-### 🔨 Fase 1 — Videojuegos en general (`knowledge/gamedev/`)
-Investigación profunda multi-agente: libros canon, charlas GDC, postmortems, documentales, artículos, noticias. 14 archivos:
+### ✅ Fase 1 — Videojuegos en general (`knowledge/gamedev/`)
+Completada 2026-07-18: 14 archivos + INDEX.md, ~3.650 líneas. Proceso: 29 agentes (14 investigadores + 14 críticos adversariales + 1 editor de coherencia), 0 caídos. Veredictos: 13 reparados, 1 ok, 0 débiles. Huecos globales detectados (programación/arquitectura, netcode, QA técnico, git/CI, i18n) son scope de las fases 2 y 3 — ver abajo. Investigación con fuentes reales: libros canon, charlas GDC, postmortems, documentales, artículos, noticias. Los 14 archivos:
 
 | Archivo | Tema |
 |---|---|
@@ -47,7 +47,7 @@ Proceso por archivo: investigador (busca fuentes reales y escribe) → crítico 
 Mismo proceso. Temas previstos (~14): arquitectura (GameObjects/prefabs/lifecycle), patrones C#, física, Input System, UI (uGUI/UI Toolkit), animación, rendering/URP, audio, rendimiento/móvil, builds por plataforma, pipeline de assets + git, Unity 6.x actualidad, gotchas, flujo con Unity MCP.
 
 ### ⬜ Fase 3 — La unión (`knowledge/pipeline/`)
-De idea a juego terminado EN Unity (~10): pipeline completo por milestones, recetas por género, estructura de proyecto, arte→Unity, juice en Unity (recetas de código), UI/flujo completo, narrativa en Unity, sistemas meta (save, economía, IAP/ads), testing/QA, producción solo-dev.
+De idea a juego terminado EN Unity (~11): pipeline completo por milestones, recetas por género, estructura de proyecto, arte→Unity, juice en Unity (recetas de código), UI/flujo completo, narrativa en Unity + localización, sistemas meta (save, economía, IAP/ads), multijugador/netcode, testing/QA, producción solo-dev. (Cubre los huecos globales que la fase 1 detectó: netcode, QA técnico, i18n; programación/arquitectura y git/CI van en fase 2.)
 
 ### ⬜ Fase 4 — Ensamblaje
 - `agents/director.md` completo: enruta por tarea, carga conocimiento por índice.

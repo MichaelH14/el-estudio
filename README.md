@@ -26,8 +26,8 @@ Cada archivo de `knowledge/` es un manual operativo destilado de fuentes reales 
 ## Estado
 
 - ✅ Fase 0 — Esqueleto del plugin
-- 🔨 Fase 1 — Conocimiento de videojuegos en general
-- ⬜ Fase 2 — Conocimiento de Unity
+- ✅ Fase 1 — Conocimiento de videojuegos en general (14 archivos + índice, fuentes citadas)
+- 🔨 Fase 2 — Conocimiento de Unity
 - ⬜ Fase 3 — El pipeline unido (juegos + Unity)
 - ⬜ Fase 4 — Ensamblaje: agente director + skills + commands
 - ♾️ Fase 5 — Mejora continua
