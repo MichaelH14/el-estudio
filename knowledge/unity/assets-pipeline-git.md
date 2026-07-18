@@ -9,7 +9,7 @@
 | Setting | Valor recomendado | Criterio |
 |---|---|---|
 | Texture Type | `Sprite (2D and UI)` | Obligatorio para SpriteRenderer/UI Image |
-| Pixels Per Unit (PPU) | **Un solo valor para TODO el proyecto** (100 es el default de Unity; pixel art: PPU = tamaño del tile, p.ej. 16 o 32) | PPU define cuántos píxeles = 1 unidad de mundo. Mezclar PPUs rompe escalas y física |
+| Pixels Per Unit (PPU) | **Un solo valor para TODO el proyecto** (100 es el default que muestra el Inspector; pixel art: PPU = tamaño del tile, p.ej. 16 o 32) | PPU define cuántos píxeles = 1 unidad de mundo. Mezclar PPUs rompe escalas y física. NO VERIFICADO por cita textual en docs (`TextureImporter.spritePixelsPerUnit` no documenta su default); el valor 100 es el que el Inspector precarga en un proyecto nuevo |
 | Filter Mode | Pixel art: `Point (no filter)` · Arte HD: `Bilinear` | Point = bordes duros; Bilinear = suavizado. Trilinear solo con mipmaps |
 | Mipmaps | **Off** en 2D puro | Mipmaps en sprites 2D solo desperdician 33% de memoria; útiles solo si el sprite se ve a distancias variables en 3D |
 | Mesh Type | `Tight` (default; reduce overdraw) · `Full Rect` para sprites con 9-slice/tiling | Sprites <32×32 px usan Full Rect automáticamente |
@@ -32,7 +32,7 @@ Formatos por plataforma (docs Unity 6.2, "Choose a GPU texture format by platfor
 
 - Regla mobile: default del proyecto en **ASTC 6×6**; subir a 4×4 en texturas hero/UI, bajar a 8×8 en texturas de fondo. Configurar en Platform Override, no por textura suelta. [ver: build-plataformas]
 - Max Size: dejar la fuente grande y limitar por override (2048 default; UI y props pequeños suelen vivir bien en 1024/512).
-- Crunch compression: reduce tamaño en disco/descarga, NO la memoria en runtime (sigue siendo DXT/ETC al descomprimir).
+- Crunch compression: formatos "Crunched" (RGB Crunched DXT1, RGBA Crunched DXT5) son "additional **on-disk** Crunch compression" (docs, GPU texture formats reference) — reduce tamaño en disco/descarga; en runtime la GPU sigue viendo DXT/ETC normal, la memoria de video NO baja.
 - Read/Write Enabled: **Off** (default) — On duplica la textura en RAM de CPU. Solo On si se lee con `GetPixels`.
 - sRGB Off para: normal maps (el tipo Normal Map lo maneja), masks, lookup tables. [ver: rendering-urp]
 
@@ -108,7 +108,7 @@ Regla: el agente configura el preset/postprocessor UNA vez al inicio del proyect
 | Padding | 4 px (default); subir a 8 si sangran bordes con mipmaps/escalado | |
 
 - El atlas **sobreescribe** compresión, filter mode, mipmaps y sRGB de los sprites empaquetados: configurar calidad EN el atlas, no en cada sprite fuente.
-- Sprite Atlas V2 es el modo actual en Unity 6; API runtime (`SpriteAtlasManager`) permite late binding.
+- Sprite Atlas V2 es el modo activo **por defecto desde Unity 2022.2+** (incluye Unity 6); V1 queda como legacy y no recibe atlas nuevos. V2 migra assets V1 automáticamente (quedan incompatibles con V1) y permite elegir si el atlas es la fuente de textura en Edit/Play mode o solo en build. API runtime (`SpriteAtlasManager`) permite late binding.
 - Con Addressables: el atlas es el asset addressable; no marcar los sprites sueltos además del atlas (duplica la textura en bundles).
 
 ## 3. Carga de assets: Addressables vs Resources vs AssetBundles
@@ -366,13 +366,13 @@ Caso extremo (YAML corrupto, Unity no abre la escena): descartar el merge del ar
 - Unity.gitignore — github/gitignore (repo oficial de GitHub) — base canónica del gitignore, incluye entradas de Addressables y VisualScripting.
 - Sprite (2D and UI) import settings — Unity Manual 6.2 — PPU, Filter Mode, Mesh Type (Tight, <32×32 → Full Rect), Extrude/Pivot.
 - Audio Clip import settings — Unity Manual 6.2 — Load Types con costos de memoria concretos (Vorbis ~10×, ADPCM 3.5×, streaming ~200 KB), recomendaciones por tipo de sonido.
-- Sprite Atlas (landing + reference) — Unity Manual 6.2 — draw calls, propiedades (Padding 4, Allow Rotation vs UI, Tight Packing), overrides de textura del atlas, Master/Variant.
+- Sprite Atlas (landing + reference + V2 landing) — Unity Manual 6.2, `sprite/atlas/sprite-atlas-reference.html` y `sprite/atlas/v2/v2-landing.html` — draw calls, propiedades (Padding 4, Allow Rotation vs UI, Tight Packing), overrides de textura del atlas, Master/Variant; V2 default desde 2022.2+, migración automática desde V1.
 - Loading Resources at Runtime — Unity Manual 6.2 — downsides oficiales de Resources (memoria, startup de varios segundos con 10k assets en mobile low-end, sin patching) y recomendación de Addressables.
 - Addressables 3.1: overview, Groups, Managing asset memory — docs.unity3d.com/Packages/com.unity.addressables@3.1 — address/group/catalog, bundle modes, regla load↔release, refcount por bundle, asset churn, Addressables Profiler.
 - Editor settings (class-EditorManager) — Unity Manual 6.2 — Asset Serialization Force Text default, "Reduce version control noise", line endings.
 - Version control integration — Unity Manual 6.2 — Visible Meta Files default, integración con VCS externos.
 - Model tab (FBX Importer) — Unity Manual 6.2 — Scale Factor, Mesh Compression, Read/Write, Optimize Mesh, normals/tangents Mikktspace.
-- Choose a GPU texture format by platform — Unity Manual 6.2 — BC1/BC7/BC6H desktop, ASTC iOS/Android, fallbacks ETC2, ASTC HDR.
+- GPU texture formats reference (antes "Choose a GPU texture format by platform") — Unity Manual 6.2, `texture-formats-reference.html` — BC1/BC7/BC6H desktop, ASTC iOS/Android, fallbacks ETC2, ASTC HDR; confirma Crunch como compresión "on-disk" (RGB/RGBA Crunched DXT1/DXT5).
 - Presets — Unity Manual 6.2 — presets de importer, Preset Manager, aplicación automática por carpeta.
 - AssetPostprocessor — Unity Scripting API 6.2 — nombres exactos de OnPreprocess*/OnPostprocess*.
 - Multi-Scene editing — Unity Manual 6.2 — escenas aditivas como workflow colaborativo.

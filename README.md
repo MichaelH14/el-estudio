@@ -28,8 +28,8 @@ Cada archivo de `knowledge/` es un manual operativo destilado de fuentes reales 
 **Bloque A — Juegos + Unity**
 - ✅ Fase 0 — Esqueleto del plugin
 - ✅ Fase 1 — Conocimiento de videojuegos en general (14 archivos + índice, fuentes citadas)
-- 🔨 Fase 2 — Conocimiento de Unity
-- ⬜ Fase 3 — El pipeline unido (juegos + Unity)
+- ✅ Fase 2 — Conocimiento de Unity (14 archivos + índice, verificado contra docs de Unity 6)
+- 🔨 Fase 3 — El pipeline unido (juegos + Unity)
 - ⬜ Fase 4 — Ensamblaje v1: agente director + skills + commands
 
 **Bloque B — Arte 3D con Blender**

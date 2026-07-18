@@ -13,7 +13,7 @@ Verificado contra CoplayDev/unity-mcp v10.x (docs julio 2026) y docs oficiales U
   1. **Package de Unity** (bridge, instalado via Package Manager con git URL `https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main`): corre dentro del editor y ejecuta las operaciones.
   2. **Servidor Python** (3.10+, gestionado con `uv`): habla MCP con el cliente (Claude Code, Cursor, VS Code, etc.) y enruta al bridge.
 - Transports: **HTTP** (default, endpoint `http://localhost:8080/mcp`, multi-cliente con `client_id` por sesión, bind a loopback por defecto) y **stdio** (un proceso Python por cliente, bridge TCP legacy hacia el editor).
-- Soporta **Unity 2021.3 LTS → 6.x**. Está en beta: comportamiento puede cambiar entre versiones (v10.0.0 es la mayor a mediados de 2026).
+- Soporta **Unity 2021.3 LTS → 6.x**. Está en beta: comportamiento puede cambiar entre versiones (última release verificada: v10.1.0, 13-jul-2026).
 - No confundir con otros servers "unity mcp" (hay varios forks). Los nombres de herramienta de abajo son los del catálogo oficial v10; si el server conectado difiere, inventaría sus tools reales antes de asumir nada.
 
 ### Multi-instancia
