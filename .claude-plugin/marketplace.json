@@ -1,0 +1,15 @@
+{
+  "name": "michael-games",
+  "description": "El Estudio — plugin de creación de videojuegos de Michael Hiraldo",
+  "owner": {
+    "name": "Michael Hiraldo"
+  },
+  "plugins": [
+    {
+      "name": "el-estudio",
+      "source": "./",
+      "version": "0.1.0",
+      "description": "Game design + Unity destilados: el manual completo para crear videojuegos desde cero con un agente IA"
+    }
+  ]
+}

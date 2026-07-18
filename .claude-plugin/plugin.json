@@ -1,0 +1,10 @@
+{
+  "name": "el-estudio",
+  "version": "0.1.0",
+  "description": "Estudio de videojuegos para Claude Code: conocimiento destilado de game design + Unity para crear juegos desde cero. Diseñado para funcionar con cualquier modelo (Opus-ready): la inteligencia vive en los archivos, no en el modelo.",
+  "author": {
+    "name": "Michael Hiraldo"
+  },
+  "repository": "https://github.com/MichaelH14/el-estudio",
+  "license": "MIT"
+}
