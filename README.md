@@ -15,6 +15,8 @@ knowledge/
   gamedev/    Fase 1 — cómo se hacen los videojuegos (diseño, arte, narrativa, historia…)
   unity/      Fase 2 — el motor: Unity a fondo
   pipeline/   Fase 3 — la unión: de idea a juego terminado EN Unity
+  modelado/   Fase 5 — modelado 3D para juegos (teoría agnóstica)
+  blender/    Fase 6 — Blender 5.x a fondo (en construcción)
 agents/
   director.md El agente principal: carga el conocimiento según la tarea
 skills/       Flujos de trabajo (en construcción)
@@ -33,7 +35,7 @@ Cada archivo de `knowledge/` es un manual operativo destilado de fuentes reales 
 - ✅ Fase 4 — Ensamblaje v1: director + 4 skills (/nuevo-juego, /receta-genero, /juice-pass, /ship-check)
 
 **Bloque B — Arte 3D con Blender**
-- ⬜ Fases 5–12 — Modelado 3D → Blender (incl. addons, bpy, blender-mcp) → modelado en Blender → texturizado → rigging → animación → animación en Blender → pipeline de assets Blender↔Unity
+- 🔨 Fases 5–12 — ✅Modelado 3D (11 archivos) → 🔨Blender (incl. addons, bpy, blender-mcp) → modelado en Blender → texturizado → rigging → animación → animación en Blender → pipeline de assets Blender↔Unity
 
 **Bloque C — Transversal**
 - ⬜ Fase 13 — Diseño UX/UI general · ⬜ Fase 14 — Equipo de agentes completo · ♾️ Mejora continua

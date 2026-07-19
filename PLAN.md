@@ -99,6 +99,19 @@ Roster previsto (cada agente = un rol que carga SU parte del conocimiento; sin o
 | `ux-ui` | Interfaces, HUD, onboarding, arte 2D de UI | ux-ui + gamedev/arte-direccion |
 | `qa` | Audita: feel pass, rendimiento, checklist de ship; no se auto-aprueba | gotchas + reglas prácticas de todos |
 
+## Bloque D — Especialización móvil (orden de Michael 2026-07-19; arranca al terminar todo lo anterior)
+
+Mismo patrón, orientado a juegos móviles. NO repite lo que las bases ya tienen de móvil (UX móvil, hyper-casual/idle, rendimiento/builds móvil, IAP/ads, tiendas, presupuestos móviles) — profundiza y especializa:
+
+### ⬜ Fase 15 — Juegos móviles a fondo (`knowledge/movil/`)
+Diseño mobile-first: sesiones cortas e interrupciones, juego a una mano, el mercado móvil real (géneros que funcionan, UA/descubrimiento, benchmarks), monetización móvil avanzada (economías F2P, live-ops, eventos), retención móvil, diferencias iOS vs Android como mercados.
+
+### ⬜ Fase 16 — Móvil en Unity a fondo
+Unity móvil hardcore: perf en gama baja (thermal, batería, memoria, tamaño de build al límite), shaders/URP móvil, input táctil avanzado, integración profunda de servicios (IAP/ads/push/analytics en producción real), testing en device matrix, pipelines de release iOS+Android.
+
+### ⬜ Fase 17 — Arte y modelado para móvil
+Assets móviles: presupuestos agresivos, texel density para pantallas chicas, shaders baratos que se ven caros, atlasing extremo, LODs móviles, estilos que rinden en móvil (por qué el estilizado domina), UI/HUD para dedos y pantallas pequeñas.
+
 ### ♾️ Mejora continua
 Cada juego real retroalimenta el conocimiento (pitfalls nuevos, recetas probadas). Los huecos que un agente reporte ("necesitaba X y no estaba") se convierten en investigación.
 
@@ -114,7 +127,7 @@ Cada juego real retroalimenta el conocimiento (pitfalls nuevos, recetas probadas
 ## Infra local (Mac de Michael)
 
 - Blender: ✅ **5.2.0 LTS instalado** (2026-07-18) en `~/Applications/Blender.app` vía brew cask (`--appdir` de usuario porque `/Applications` tiene flag `sunlnk` — solo root saca cosas de ahí) + CLI `blender` linkeado. El 4.3.0 viejo (de la cuenta `jeanmichaelhiraldopimentel`) sigue en `/Applications` inerte — borrarlo cuando Michael pueda: `sudo rm -rf /Applications/Blender.app`. Config de usuario 4.2/4.3 conservada.
-- blender-mcp: instalar cuando arranque el bloque B.
+- blender-mcp: ✅ instalado (2026-07-19) — addon `blender_mcp_addon` habilitado en Blender 5.2 (instalación headless, prefs guardadas) + servidor MCP `blender` registrado a nivel usuario (`uvx blender-mcp`, verificado ✔ Connected). Para operar Blender de verdad: abrir Blender y arrancar el socket del addon (panel lateral BlenderMCP) — o headless vía `--python-expr` (receta en fase 6/7).
 
 ## Decisiones tomadas
 
