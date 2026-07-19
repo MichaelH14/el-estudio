@@ -113,7 +113,7 @@ Cada juego real retroalimenta el conocimiento (pitfalls nuevos, recetas probadas
 
 ## Infra local (Mac de Michael)
 
-- Blender: 4.3.0 viejo pendiente de borrar (es de la cuenta `jeanmichaelhiraldopimentel`, requiere sudo de Michael); Blender 5.2.0 ya descargado vía brew cask, listo para instalar. Config de usuario 4.2/4.3 se conserva.
+- Blender: ✅ **5.2.0 LTS instalado** (2026-07-18) en `~/Applications/Blender.app` vía brew cask (`--appdir` de usuario porque `/Applications` tiene flag `sunlnk` — solo root saca cosas de ahí) + CLI `blender` linkeado. El 4.3.0 viejo (de la cuenta `jeanmichaelhiraldopimentel`) sigue en `/Applications` inerte — borrarlo cuando Michael pueda: `sudo rm -rf /Applications/Blender.app`. Config de usuario 4.2/4.3 conservada.
 - blender-mcp: instalar cuando arranque el bloque B.
 
 ## Decisiones tomadas

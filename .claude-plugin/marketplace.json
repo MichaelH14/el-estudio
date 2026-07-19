@@ -8,8 +8,8 @@
     {
       "name": "el-estudio",
       "source": "./",
-      "version": "0.1.0",
-      "description": "Game design + Unity destilados: el manual completo para crear videojuegos desde cero con un agente IA"
+      "version": "0.4.0",
+      "description": "Game design + Unity 6 + pipeline destilados en 41 archivos: el manual completo para crear videojuegos desde cero con un agente IA"
     }
   ]
 }

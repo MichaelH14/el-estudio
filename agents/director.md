@@ -33,20 +33,38 @@ Antes de opinar o diseñar NADA, carga el conocimiento relevante:
 3. Si el conocimiento contradice tu intuición, gana el conocimiento — está destilado de fuentes reales.
 4. Si detectas un hueco en el conocimiento (algo que necesitabas y no está), repórtalo al final de tu trabajo: es input para mejorar el plugin.
 
+## Skills del plugin (úsalas cuando la tarea coincida)
+
+| Skill | Cuándo |
+|---|---|
+| `/nuevo-juego` | Idea cruda → GDD → proyecto Unity día 0 → prototipo del loop |
+| `/receta-genero` | Montar la base técnica de un género conocido |
+| `/juice-pass` | El juego funciona pero se siente muerto |
+| `/ship-check` | Guantelete completo antes de publicar |
+
 ## Mapa de carga rápida
+
+Las tres bases: `gamedev/` (teoría de diseño), `unity/` (el motor), `pipeline/` (la unión: cómo se hace de verdad). Empieza SIEMPRE por el INDEX de la base que toque.
 
 | Tarea | Carga |
 |---|---|
-| Idea nueva / concepto | gamedev: fundamentos-diseno, mecanicas-sistemas, generos, preproduccion |
+| Idea nueva / concepto | gamedev: fundamentos-diseno, mecanicas-sistemas, generos, preproduccion → pipeline: pipeline-completo |
+| Empezar un género concreto | pipeline: recetas-generos + estructura-proyecto |
 | El juego no es divertido | gamedev: fundamentos-diseno, game-feel, mecanicas-sistemas |
-| Se ve/siente muerto | gamedev: game-feel, animacion, audio |
-| Niveles / contenido | gamedev: level-design |
-| Historia / diálogos | gamedev: narrativa-guion |
-| Look del juego | gamedev: arte-direccion |
-| Menús / tutorial | gamedev: ux-ui-onboarding |
-| Retención / monetización | gamedev: psicologia-retencion-negocio |
-| Implementación en Unity | unity/INDEX.md → lo que aplique |
-| De idea a juego completo | pipeline/INDEX.md → pipeline-completo + receta del género |
+| Se ve/siente muerto | gamedev: game-feel → pipeline: feel-en-unity |
+| Niveles / contenido | gamedev: level-design (+ tilemaps en pipeline: recetas-generos) |
+| Historia / diálogos / idiomas | gamedev: narrativa-guion → pipeline: narrativa-localizacion |
+| Enemigos / IA / pathfinding | pipeline: ia-enemigos |
+| Look del juego / assets | gamedev: arte-direccion → pipeline: arte-a-unity |
+| Menús / HUD / tutorial | gamedev: ux-ui-onboarding → pipeline: ui-flujo-completo |
+| Save / economía / IAP / ads | pipeline: sistemas-meta |
+| Multijugador | pipeline: multijugador-netcode |
+| Retención / monetización (diseño) | gamedev: psicologia-retencion-negocio |
+| Implementación pura de motor | unity/INDEX.md → lo que aplique |
+| Operar el editor via MCP | unity: unity-mcp-flujo (SIEMPRE antes de tocar un editor conectado) |
+| Tests / QA | pipeline: testing-qa |
+| Publicar en tiendas | pipeline: publicacion-tiendas + unity: build-plataformas |
+| Profundizar con fuentes externas | knowledge/recursos-libres.md |
 
 ## Cómo trabajas
 
