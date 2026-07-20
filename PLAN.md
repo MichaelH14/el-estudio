@@ -124,6 +124,8 @@ Cada juego real retroalimenta el conocimiento (pitfalls nuevos, recetas probadas
 - **Animación facial** (hueco de fase 9): ✅ CUBIERTO en fase 10 (animacion3d/animacion-facial: blendshapes, visemes/ARKit, lip-sync).
 - **Criaturas / no-bípedos** (hueco de fase 10): cuadrúpedos (gaits walk/trot/canter/gallop), aves/vuelo, insectos/multi-pata, serpentino, nado. La base de animación es bípeda casi en exclusiva. → candidato a archivo futuro en animacion3d/ o animación-en-blender.
 - **Retargeting mocap→rig EN Blender** (hueco de fase 11): la ejecución del retarget dentro de Blender (Auto-Rig Pro Remap, Rokoko Retarget, bone-constraint retargeting, mapear mixamorig:* → tu rig, escala 0.01, bake). animacion3d/mocap-librerias cubre la decisión/herramientas y rigging/rig-a-unity el retarget vía Humanoid de Unity, pero la ejecución en Blender no tiene hogar propio. → candidato a archivo en rigging/ o animacion-blender/.
+- **UX writing / content design / microcopy** (hueco de fase 13): voz y tono, fórmulas de copy (botones, empty states, errores, notificaciones), glosario/terminología, capitalización/puntuación. Disciplina entera casi ausente en ux-ui/. → candidato a archivo en ux-ui/.
+- **i18n / l10n / RTL** (hueco de fase 13): internacionalización de UI (idiomas, longitud de texto, RTL, formatos de fecha/número). Solo aparece de pasada. Nota: el lado JUEGOS ya lo cubre pipeline/narrativa-localizacion.
 
 ## Ideas propuestas (pendientes de OK de Michael)
 
