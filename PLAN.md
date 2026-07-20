@@ -119,6 +119,8 @@ Cada juego real retroalimenta el conocimiento (pitfalls nuevos, recetas probadas
 
 - **Transparencia/alpha como workflow de textura** (hueco de fase 8): cutout de follaje, vidrio, hair/fur cards, dilatación bajo píxeles transparentes (halos), render queue/sorting de transparencias, double-sided, alpha-to-coverage. Esencial para follaje/cristal/pelo. → candidato a archivo en `texturizado/` o `pipeline/`.
 - **Terreno / splat maps** (hueco de fase 8): Unity Terrain (Terrain Layers, splatmap painting, blend por altura/pendiente). Ausente. → candidato para bloque de entornos.
+- **Rig facial / blendshapes de expresión** (hueco de fase 9): crear blendshapes de expresión, visemes/ARKit para lip-sync, hueso de mandíbula, ojos look-at, import de BlendShapes en Unity. Solo hay corrective shapes de volumen, no el flujo de animación facial. → candidato para el bloque de animación.
+- **Movimiento secundario dinámico** (hueco de fase 9): spring/jiggle bones para pelo, capa, cola, orejas (Dynamic Bone / addons Unity). → candidato para animación o VFX.
 
 ## Ideas propuestas (pendientes de OK de Michael)
 
