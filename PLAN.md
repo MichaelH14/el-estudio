@@ -115,6 +115,11 @@ Assets móviles: presupuestos agresivos, texel density para pantallas chicas, sh
 ### ♾️ Mejora continua
 Cada juego real retroalimenta el conocimiento (pitfalls nuevos, recetas probadas). Los huecos que un agente reporte ("necesitaba X y no estaba") se convierten en investigación.
 
+## Huecos detectados por los pases de coherencia (candidatos a cerrar)
+
+- **Transparencia/alpha como workflow de textura** (hueco de fase 8): cutout de follaje, vidrio, hair/fur cards, dilatación bajo píxeles transparentes (halos), render queue/sorting de transparencias, double-sided, alpha-to-coverage. Esencial para follaje/cristal/pelo. → candidato a archivo en `texturizado/` o `pipeline/`.
+- **Terreno / splat maps** (hueco de fase 8): Unity Terrain (Terrain Layers, splatmap painting, blend por altura/pendiente). Ausente. → candidato para bloque de entornos.
+
 ## Ideas propuestas (pendientes de OK de Michael)
 
 - **Arte 2D / pixel art** (`knowledge/arte2d/`): sprites, pixel art, Aseprite, spritesheets/atlas, animación 2D frame a frame — la mayoría de los juegos chicos son 2D y el bloque B es 3D.
