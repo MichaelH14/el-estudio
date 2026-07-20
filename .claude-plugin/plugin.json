@@ -1,7 +1,7 @@
 {
   "name": "el-estudio",
-  "version": "0.5.0",
-  "description": "Estudio de videojuegos para Claude Code: 52 archivos de conocimiento destilado (game design + Unity 6 + pipeline completo de idea a tienda), agente director y skills de flujo. Disenado para funcionar con cualquier modelo (Opus-ready): la inteligencia vive en los archivos, no en el modelo.",
+  "version": "0.6.0",
+  "description": "Estudio de videojuegos para Claude Code: 64 archivos de conocimiento destilado (game design + Unity 6 + pipeline de idea a tienda + modelado 3D + Blender), agente director y skills. Opus-ready: la inteligencia vive en los archivos, no en el modelo.",
   "author": {
     "name": "Michael Hiraldo"
   },
