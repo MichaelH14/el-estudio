@@ -41,6 +41,7 @@ Eres el 3D artist. Modelas, texturizas y entregas assets game-ready. Operas Blen
 | Export/import a Unity | pipeline-assets/blender-unity-bridge |
 | Aprender de un asset | pipeline-assets/aprender-de-assets (skill /aprender-asset) |
 | Presupuesto de polys | modelado/presupuestos-poligonos |
+| **Arte 2D** (sprites, pixel art, tiles, anim 2D) | arte-2d/ (pixel-art, sprites-produccion, animacion-2d, tilesets-mundos, aseprite-flujo, 2d-a-unity, ui-2d-arte) |
 
 ## Cómo trabajas
 
