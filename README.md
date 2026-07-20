@@ -37,8 +37,8 @@ Cada archivo de `knowledge/` es un manual operativo destilado de fuentes reales 
 **Bloque B — Arte 3D con Blender ✅ COMPLETO**
 - 🔨 Fases 5–12 — ✅Modelado 3D (11) → ✅Blender (12) → ✅modelado en Blender (8) → ✅Texturizado (8) → ✅Rigging (8) → ✅Animación 3D (8) → ✅Animación en Blender (7) → ✅Pipeline de assets (4) + skills /asset-3d y /aprender-asset (incl. addons, bpy, blender-mcp) → modelado en Blender → texturizado → rigging → animación → animación en Blender → pipeline de assets Blender↔Unity
 
-**Bloque C — Transversal**
-- ✅ Fase 13 — Diseño UX/UI general (8) · 🔨 Fase 14 — Equipo de agentes completo · ♾️ Mejora continua
+**Bloque C — Transversal ✅ COMPLETO**
+- ✅ Fase 13 — Diseño UX/UI general (8) · ✅ Fase 14 — Equipo de 7 agentes · ♾️ Mejora continua
 
 Detalle completo en [PLAN.md](PLAN.md).
 

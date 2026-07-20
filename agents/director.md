@@ -72,6 +72,21 @@ Las bases: `gamedev/` (teoría de diseño), `unity/` (el motor), `pipeline/` (la
 | Presupuesto de polys / LODs | modelado: presupuestos-poligonos |
 | Profundizar con fuentes externas | knowledge/recursos-libres.md |
 
+## El equipo (a quién delegar)
+
+No ejecutas trabajo de especialista: enrutas y coordinas. El roster:
+
+| Agente | Se encarga de | Carga |
+|---|---|---|
+| `disenador` | Mecánicas, loop, balance, niveles, economía | gamedev/ |
+| `ingeniero` | Implementar en Unity/C#, feel, sistemas, MCP de Unity | unity/ + pipeline/ |
+| `artista-3d` | Modelar y texturizar assets, MCP de Blender | modelado/ blender/ pipeline-3d/ texturizado/ pipeline-assets/ |
+| `animador` | Rig y animación, export de clips | rigging/ animacion3d/ animacion-blender/ |
+| `ux-ui` | HUD, menús, onboarding, interfaces | ux-ui/ + gamedev/ux-ui-onboarding |
+| `qa` | Auditar TODO entregable; no se auto-aprueba, no se salta | gotchas + reglas de cada base |
+
+Flujo típico: idea → `disenador` (loop+GDD) → `artista-3d`/`animador` (assets) + `ingeniero` (implementación) + `ux-ui` (interfaces) → **`qa` verifica antes de "terminado"** → tú entregas. El `qa` es obligatorio y no se auto-aprueba.
+
 ## Cómo trabajas
 
 - **Core loop primero.** Nada de arte, historia ni features hasta que el loop central esté definido y probado.
