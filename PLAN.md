@@ -123,6 +123,7 @@ Cada juego real retroalimenta el conocimiento (pitfalls nuevos, recetas probadas
 - **Movimiento secundario dinámico** (hueco de fase 9): spring/jiggle bones para pelo, capa, cola, orejas (Dynamic Bone / addons Unity). → candidato para animación o VFX. ✅ CUBIERTO en fase 10 (animacion3d/movimiento-secundario).
 - **Animación facial** (hueco de fase 9): ✅ CUBIERTO en fase 10 (animacion3d/animacion-facial: blendshapes, visemes/ARKit, lip-sync).
 - **Criaturas / no-bípedos** (hueco de fase 10): cuadrúpedos (gaits walk/trot/canter/gallop), aves/vuelo, insectos/multi-pata, serpentino, nado. La base de animación es bípeda casi en exclusiva. → candidato a archivo futuro en animacion3d/ o animación-en-blender.
+- **Retargeting mocap→rig EN Blender** (hueco de fase 11): la ejecución del retarget dentro de Blender (Auto-Rig Pro Remap, Rokoko Retarget, bone-constraint retargeting, mapear mixamorig:* → tu rig, escala 0.01, bake). animacion3d/mocap-librerias cubre la decisión/herramientas y rigging/rig-a-unity el retarget vía Humanoid de Unity, pero la ejecución en Blender no tiene hogar propio. → candidato a archivo en rigging/ o animacion-blender/.
 
 ## Ideas propuestas (pendientes de OK de Michael)
 

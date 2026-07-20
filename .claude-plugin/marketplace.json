@@ -8,8 +8,8 @@
     {
       "name": "el-estudio",
       "source": "./",
-      "version": "0.10.0",
-      "description": "Game design + Unity 6 + pipeline + modelado 3D + Blender + recetas de modelado destilados en 96 archivos: el manual completo para crear videojuegos desde cero con un agente IA"
+      "version": "0.11.0",
+      "description": "Game design + Unity 6 + pipeline + modelado 3D + Blender + recetas de modelado destilados en 103 archivos: el manual completo para crear videojuegos desde cero con un agente IA"
     }
   ]
 }
