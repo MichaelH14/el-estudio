@@ -34,8 +34,8 @@ Cada archivo de `knowledge/` es un manual operativo destilado de fuentes reales 
 - ✅ Fase 3 — El pipeline unido (13 archivos puente + índice, incl. publicación en tiendas)
 - ✅ Fase 4 — Ensamblaje v1: director + 4 skills (/nuevo-juego, /receta-genero, /juice-pass, /ship-check)
 
-**Bloque B — Arte 3D con Blender**
-- 🔨 Fases 5–12 — ✅Modelado 3D (11) → ✅Blender (12) → ✅modelado en Blender (8) → ✅Texturizado (8) → ✅Rigging (8) → ✅Animación 3D (8) → ✅Animación en Blender (7) → 🔨pipeline de assets (incl. addons, bpy, blender-mcp) → modelado en Blender → texturizado → rigging → animación → animación en Blender → pipeline de assets Blender↔Unity
+**Bloque B — Arte 3D con Blender ✅ COMPLETO**
+- 🔨 Fases 5–12 — ✅Modelado 3D (11) → ✅Blender (12) → ✅modelado en Blender (8) → ✅Texturizado (8) → ✅Rigging (8) → ✅Animación 3D (8) → ✅Animación en Blender (7) → ✅Pipeline de assets (4) + skills /asset-3d y /aprender-asset (incl. addons, bpy, blender-mcp) → modelado en Blender → texturizado → rigging → animación → animación en Blender → pipeline de assets Blender↔Unity
 
 **Bloque C — Transversal**
 - ⬜ Fase 13 — Diseño UX/UI general · ⬜ Fase 14 — Equipo de agentes completo · ♾️ Mejora continua

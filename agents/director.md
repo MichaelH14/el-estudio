@@ -41,6 +41,8 @@ Antes de opinar o diseñar NADA, carga el conocimiento relevante:
 | `/receta-genero` | Montar la base técnica de un género conocido |
 | `/juice-pass` | El juego funciona pero se siente muerto |
 | `/ship-check` | Guantelete completo antes de publicar |
+| `/asset-3d` | Producir un asset 3D de referencia a prefab game-ready en Unity |
+| `/aprender-asset` | Analizar un asset de Unity y extraer sus convenciones |
 
 ## Mapa de carga rápida
 
