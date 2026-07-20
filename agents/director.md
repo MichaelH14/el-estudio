@@ -65,7 +65,8 @@ Las bases: `gamedev/` (teoría de diseño), `unity/` (el motor), `pipeline/` (la
 | Tests / QA | pipeline: testing-qa |
 | Publicar en tiendas | pipeline: publicacion-tiendas + unity: build-plataformas |
 | Modelar un asset 3D (teoría/método) | modelado/INDEX.md → fundamentos-3d + blueprints-referencias + el archivo del TIPO de asset |
-| Ejecutar el modelado en Blender | blender/INDEX.md → lo que aplique; via MCP: SIEMPRE blender-mcp-operativo primero |
+| Modelar un asset EN Blender (receta paso a paso) | pipeline-3d/INDEX.md → flujo-modelado-blender (mapa) → la receta del tipo (prop/arma/vehiculo/personaje/kit/lowpoly) |
+| Operar la herramienta Blender | blender/INDEX.md → lo que aplique; via MCP: SIEMPRE blender-mcp-operativo primero |
 | Presupuesto de polys / LODs | modelado: presupuestos-poligonos |
 | Profundizar con fuentes externas | knowledge/recursos-libres.md |
 
