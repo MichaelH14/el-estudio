@@ -120,7 +120,9 @@ Cada juego real retroalimenta el conocimiento (pitfalls nuevos, recetas probadas
 - **Transparencia/alpha como workflow de textura** (hueco de fase 8): cutout de follaje, vidrio, hair/fur cards, dilatación bajo píxeles transparentes (halos), render queue/sorting de transparencias, double-sided, alpha-to-coverage. Esencial para follaje/cristal/pelo. → candidato a archivo en `texturizado/` o `pipeline/`.
 - **Terreno / splat maps** (hueco de fase 8): Unity Terrain (Terrain Layers, splatmap painting, blend por altura/pendiente). Ausente. → candidato para bloque de entornos.
 - **Rig facial / blendshapes de expresión** (hueco de fase 9): crear blendshapes de expresión, visemes/ARKit para lip-sync, hueso de mandíbula, ojos look-at, import de BlendShapes en Unity. Solo hay corrective shapes de volumen, no el flujo de animación facial. → candidato para el bloque de animación.
-- **Movimiento secundario dinámico** (hueco de fase 9): spring/jiggle bones para pelo, capa, cola, orejas (Dynamic Bone / addons Unity). → candidato para animación o VFX.
+- **Movimiento secundario dinámico** (hueco de fase 9): spring/jiggle bones para pelo, capa, cola, orejas (Dynamic Bone / addons Unity). → candidato para animación o VFX. ✅ CUBIERTO en fase 10 (animacion3d/movimiento-secundario).
+- **Animación facial** (hueco de fase 9): ✅ CUBIERTO en fase 10 (animacion3d/animacion-facial: blendshapes, visemes/ARKit, lip-sync).
+- **Criaturas / no-bípedos** (hueco de fase 10): cuadrúpedos (gaits walk/trot/canter/gallop), aves/vuelo, insectos/multi-pata, serpentino, nado. La base de animación es bípeda casi en exclusiva. → candidato a archivo futuro en animacion3d/ o animación-en-blender.
 
 ## Ideas propuestas (pendientes de OK de Michael)
 
