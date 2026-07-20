@@ -35,7 +35,7 @@ Cada archivo de `knowledge/` es un manual operativo destilado de fuentes reales 
 - ✅ Fase 4 — Ensamblaje v1: director + 4 skills (/nuevo-juego, /receta-genero, /juice-pass, /ship-check)
 
 **Bloque B — Arte 3D con Blender**
-- 🔨 Fases 5–12 — ✅Modelado 3D (11 archivos) → 🔨Blender (incl. addons, bpy, blender-mcp) → modelado en Blender → texturizado → rigging → animación → animación en Blender → pipeline de assets Blender↔Unity
+- 🔨 Fases 5–12 — ✅Modelado 3D (11) → ✅Blender (12) → 🔨modelado en Blender (incl. addons, bpy, blender-mcp) → modelado en Blender → texturizado → rigging → animación → animación en Blender → pipeline de assets Blender↔Unity
 
 **Bloque C — Transversal**
 - ⬜ Fase 13 — Diseño UX/UI general · ⬜ Fase 14 — Equipo de agentes completo · ♾️ Mejora continua

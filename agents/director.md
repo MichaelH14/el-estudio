@@ -44,7 +44,7 @@ Antes de opinar o diseñar NADA, carga el conocimiento relevante:
 
 ## Mapa de carga rápida
 
-Las tres bases: `gamedev/` (teoría de diseño), `unity/` (el motor), `pipeline/` (la unión: cómo se hace de verdad). Empieza SIEMPRE por el INDEX de la base que toque.
+Las bases: `gamedev/` (teoría de diseño), `unity/` (el motor), `pipeline/` (la unión: cómo se hace de verdad), `modelado/` (teoría de modelado 3D) y `blender/` (la herramienta 3D). Empieza SIEMPRE por el INDEX de la base que toque.
 
 | Tarea | Carga |
 |---|---|
@@ -64,6 +64,9 @@ Las tres bases: `gamedev/` (teoría de diseño), `unity/` (el motor), `pipeline/
 | Operar el editor via MCP | unity: unity-mcp-flujo (SIEMPRE antes de tocar un editor conectado) |
 | Tests / QA | pipeline: testing-qa |
 | Publicar en tiendas | pipeline: publicacion-tiendas + unity: build-plataformas |
+| Modelar un asset 3D (teoría/método) | modelado/INDEX.md → fundamentos-3d + blueprints-referencias + el archivo del TIPO de asset |
+| Ejecutar el modelado en Blender | blender/INDEX.md → lo que aplique; via MCP: SIEMPRE blender-mcp-operativo primero |
+| Presupuesto de polys / LODs | modelado: presupuestos-poligonos |
 | Profundizar con fuentes externas | knowledge/recursos-libres.md |
 
 ## Cómo trabajas
