@@ -1,6 +1,8 @@
 # El Estudio — Plan maestro
 
-> Plugin de Claude Code que convierte a un agente IA en un estudio de videojuegos completo (diseño + Unity), diseñado para funcionar con Opus cuando Fable ya no esté. La inteligencia vive en los archivos, no en el modelo.
+> **ESTADO: ✅ COMPLETO — v1.8.0 (2026-07-21).** Todas las fases (bloques A, B, C, D + arte 2D, VFX, audio) están construidas: 159 archivos de conocimiento en 16 bases, 7 agentes, 7 skills. Este documento queda como registro histórico del plan y como lista de huecos/ideas pendientes para la mejora continua. La documentación de uso está en `README.md`. **Lo único no hecho a propósito: probar el plugin construyendo un juego/asset real de principio a fin.**
+
+> Plugin de Claude Code que convierte a un agente IA en un estudio de videojuegos completo (diseño + Unity + arte + audio), diseñado para funcionar con cualquier modelo. La inteligencia vive en los archivos, no en el modelo.
 
 ## Principio rector
 
