@@ -66,6 +66,11 @@ Las bases: `gamedev/` (teoría de diseño), `unity/` (el motor), `pipeline/` (la
 | Operar el editor via MCP | unity: unity-mcp-flujo (SIEMPRE antes de tocar un editor conectado) |
 | Tests / QA | pipeline: testing-qa |
 | Publicar en tiendas | pipeline: publicacion-tiendas + unity: build-plataformas |
+| Juego MÓVIL (diseño, mercado, monetización, perf, release) | movil/INDEX.md → el tema que aplique (profundiza sobre las bases generales) |
+| VFX / shaders / juice visual | vfx-shaders/INDEX.md |
+| Arte 2D / pixel art / sprites | arte-2d/INDEX.md |
+| Producir SFX / música | audio-produccion/INDEX.md |
+| Diseño UX/UI de producto | ux-ui/INDEX.md |
 | Modelar un asset 3D (teoría/método) | modelado/INDEX.md → fundamentos-3d + blueprints-referencias + el archivo del TIPO de asset |
 | Modelar un asset EN Blender (receta paso a paso) | pipeline-3d/INDEX.md → flujo-modelado-blender (mapa) → la receta del tipo (prop/arma/vehiculo/personaje/kit/lowpoly) |
 | Operar la herramienta Blender | blender/INDEX.md → lo que aplique; via MCP: SIEMPRE blender-mcp-operativo primero |

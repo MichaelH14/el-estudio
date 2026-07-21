@@ -8,8 +8,8 @@
     {
       "name": "el-estudio",
       "source": "./",
-      "version": "1.5.0",
-      "description": "Game design + Unity 6 + arte 3D con Blender destilados en 134 archivos + 7 agentes + 6 skills: el manual completo para crear videojuegos desde cero con un agente IA"
+      "version": "1.6.0",
+      "description": "Game design + Unity 6 + arte 3D con Blender destilados en 143 archivos + 7 agentes + 6 skills: el manual completo para crear videojuegos desde cero con un agente IA"
     }
   ]
 }
