@@ -302,5 +302,3 @@ Claves verificadas:
 - **Unity Shader Graph 17.x — Get Main Light Direction Node** (docs.unity3d.com, `com.unity.shadergraph@17.0`): nodo oficial que devuelve la dirección world-space de la luz principal (Vector3) sin Custom Function — verificado en esta auditoría (2026-07-20).
 - **Unity URP 17.x — Universal Render Pipeline Asset**: Opaque Downsampling verificado con sus 4 opciones exactas (None, 2x Bilinear, 4x Box, 4x Bilinear); Depth Texture → `_CameraDepthTexture`, Opaque Texture → `_CameraOpaqueTexture` — verificado en esta auditoría (2026-07-20).
 - **Unity URP 17.x — Full Screen Pass Renderer Feature** y **Render Objects Renderer Feature** (docs.unity3d.com, redirige a `docs.unity3d.com/6000.0/.../urp/renderer-features/`): nombres exactos y propósito (full-screen effects / renderizar un subconjunto de objetos con Layer Mask y Material override) verificados en esta auditoría (2026-07-20).
-</content>
-</invoke>

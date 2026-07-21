@@ -278,5 +278,3 @@ bpy.ops.nla.bake(frame_start=1, frame_end=int(act.frame_range[1]),
 - **Unity Manual — Model Importer animation clip settings** (docs.unity3d.com/Manual/class-AnimationClip.html) — Loop Time, Loop Pose, Cycle Offset, Root Transform Rotation/Position(Y)/Position(XZ) con Bake Into Pose y Based Upon.
 - **Unity Manual — Avatar Creation and Setup** (docs.unity3d.com/Manual/AvatarCreationandSetup.html) — Avatar Definition Create From This Model vs Copy From Other Avatar + Source, reuso de avatar para archivos `@animation` con el mismo esqueleto.
 - **Bases sintetizadas de El Estudio:** [ver: rigging/rigging-en-blender-operativo] (armature, modos, verificación, settings FBX de rig: deform-only, add_leaf_bones OFF), [ver: unity/animacion-unity] (Animator, clips, Avatar Humanoid/Generic, root motion, import de animación), y los cross-refs de técnica en [ver: animacion3d/ciclos-locomocion] · [ver: animacion3d/animacion-combate] · [ver: animacion3d/keyframes-curvas].
-</content>
-</invoke>

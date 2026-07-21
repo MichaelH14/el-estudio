@@ -1,6 +1,6 @@
 # Motion capture y librerías de animación
 
-> **Cuando cargar este archivo:** al decidir de dónde sale la animación de un personaje humanoide — capturar mocap, comprar/bajar una librería (Mixamo, Asset Store), o keyframear a mano —, al retargetear clips de mocap a tu rig, al limpiar mocap (ruido, foot sliding), al mezclar mocap con keyframe, o al evaluar IA generativa de movimiento (text-to-motion) a 2026. Es la fase de **producción 3D general**: la ejecución concreta en Blender es la fase siguiente (aún no existe); el consumo en Unity está en [ver: unity/animacion-unity]; el retargeting técnico Humanoid en [ver: rigging/rig-a-unity].
+> **Cuando cargar este archivo:** al decidir de dónde sale la animación de un personaje humanoide — capturar mocap, comprar/bajar una librería (Mixamo, Asset Store), o keyframear a mano —, al retargetear clips de mocap a tu rig, al limpiar mocap (ruido, foot sliding), al mezclar mocap con keyframe, o al evaluar IA generativa de movimiento (text-to-motion) a 2026. Es la fase de **producción 3D general**: la ejecución concreta en Blender (mapeo de huesos, ARP Remap/Rokoko/Copy Rotation, bake) está en [ver: animacion-blender/retarget-mocap]; el consumo en Unity está en [ver: unity/animacion-unity]; el retargeting técnico Humanoid en [ver: rigging/rig-a-unity].
 
 Este archivo NO repite los 12 principios ni el game-feel del ataque (wind-up/active/recovery, hitstop, telegraphing) — eso vive en [ver: gamedev/animacion] y [ver: gamedev/game-feel]. Aquí: **de dónde viene el movimiento y cómo convertirlo en algo shippeable**.
 
@@ -105,7 +105,7 @@ El sistema Humanoid de Unity ES un retargeter: describe la pose en **muscle spac
 - **Root motion / desplazamiento**: el **Body Transform** (centro de masa) es la única curva en world-space; el **Root Transform** se deriva proyectándolo al plano Y y su cambio por frame mueve el GameObject (Unity Manual — Root Motion, verificado). Para mocap de locomoción hacia adelante, **Based Upon = Body Orientation** funciona; para strafe hay que ajustar offset a mano. **Bake Into Pose** Rotation + Y para clips de locomoción (evita rotación/altura no deseada); XZ para idles (evita drift). Detalle de estos toggles en [ver: rigging/rig-a-unity §5].
 
 ### Vía Blender (antes de exportar)
-Cuando el clip va a un rig **Generic** (criatura, o control fino), o quieres editar antes de Unity, retargeteas en Blender: addons como **Auto-Rig Pro (Remap)**, el **plugin de Rokoko para Blender**, o los retargeters nativos. Mapeas huesos origen→destino, **horneas (bake)** el resultado sobre tu armature, y exportas FBX. La ejecución concreta (operadores, NLA, bake) es la fase de Blender (aún no existe en esta base); el contrato FBX/escala está en [ver: blender/import-export] y el puente rig↔Unity en [ver: rigging/rig-a-unity].
+Cuando el clip va a un rig **Generic** (criatura, o control fino), o quieres editar antes de Unity, retargeteas en Blender: addons como **Auto-Rig Pro (Remap)**, el **plugin de Rokoko para Blender**, o los retargeters nativos. Mapeas huesos origen→destino, **horneas (bake)** el resultado sobre tu armature, y exportas FBX. La ejecución paso a paso (Build Bones List, rest pose, constraints, bake) está en [ver: animacion-blender/retarget-mocap]; el contrato FBX/escala está en [ver: blender/import-export] y el puente rig↔Unity en [ver: rigging/rig-a-unity].
 
 **Gotcha universal del retargeting:** proporciones distintas entre origen y destino = **foot sliding y penetración** casi garantizados. El retarget resuelve la orientación de los huesos, no los contactos con el suelo. Eso lo arregla la limpieza (§6), no el retargeter.
 
@@ -117,7 +117,7 @@ Cuando el clip va a un rig **Generic** (criatura, o control fino), o quieres edi
 | **Plugin Rokoko para Blender** | Rokoko Studio/Vision, Mixamo, BVH | Gratis; retarget bone-a-bone + import directo de sus capturas |
 | **Retargeters nativos / addons libres** | BVH genérico, Mixamo | Cubren lo básico; más trabajo manual de mapeo |
 
-En los tres el patrón es el mismo: **definir esqueleto origen → mapear a huesos destino → bake sobre tu armature → exportar FBX**. La ejecución exacta (operadores, NLA, limpieza de curvas) es la fase de Blender de esta base (aún no existe — no la referencies).
+En los tres el patrón es el mismo: **definir esqueleto origen → mapear a huesos destino → bake sobre tu armature → exportar FBX**. La ejecución exacta de cada vía (Build Bones List, rest pose, constraints, bake) está en [ver: animacion-blender/retarget-mocap].
 
 ---
 
