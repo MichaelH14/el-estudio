@@ -142,7 +142,7 @@ Las bases (muchas tomas, silencio antes/después, exagerar) están en [ver: crea
 
 ## Field recording: capturar ambientes reales
 
-Ni [ver: crear-sfx] ni los demás cubren campo. Aquí lo esencial para atmósferas (lluvia, calle, bosque, mar, multitud) que se usan como cama de ambiente en loop [ver: gamedev/audio, ambiente].
+Ni [ver: crear-sfx] ni los demás cubren campo. Aquí lo esencial para atmósferas (lluvia, calle, bosque, mar, multitud) que se usan como cama de ambiente en loop [ver: gamedev/audio] (ambiente).
 
 ### Equipo mínimo
 
@@ -171,7 +171,7 @@ Para el dev solo con un Zoom: **X/Y integrado** para casi todo, **M/S** si el mo
 
 ### Técnica de ambiente
 
-- **Tomas LARGAS.** 30 s a varios minutos por ambiente → material para hacer loops sin repetición obvia y para elegir el tramo más "limpio" (sin el carro que pasó) [ver: audio-a-juego, loops].
+- **Tomas LARGAS.** 30 s a varios minutos por ambiente → material para hacer loops sin repetición obvia y para elegir el tramo más "limpio" (sin el carro que pasó) [ver: audio-a-juego] (loops).
 - **Graba el mismo sitio a distintas horas/intensidades.** Lluvia suave vs tormenta, calle diurna vs nocturna → capas para ambiente adaptativo [ver: gamedev/audio].
 - **Separa capas.** Graba la **cama** (el continuo: lluvia, viento, murmullo) aparte de los **one-shots** (el trueno, el pájaro, la bocina). En el motor la cama va en loop y los one-shots se disparan aleatorios [ver: unity/audio-unity].
 - **Watch the low end.** Tráfico, aire acondicionado y viento meten rumble sub-80 Hz que come headroom y ensucia. High-pass ~80 Hz en edición para ambientes que no dependen de graves.

@@ -130,7 +130,7 @@ La mayoría de los SFX "reales" salen de bajar un WAV de biblioteca y **editarlo
 
 ### Layering (apilar capas en pistas)
 
-Un SFX con cuerpo casi nunca es un archivo — son varias capas mezcladas [ver: gamedev/audio, layering]. Regla de las 3 capas para un impacto:
+Un SFX con cuerpo casi nunca es un archivo — son varias capas mezcladas [ver: gamedev/audio] (layering). Regla de las 3 capas para un impacto:
 
 | Capa | Función | Fuente típica |
 |---|---|---|

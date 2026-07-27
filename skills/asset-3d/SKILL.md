@@ -7,6 +7,8 @@ description: Use when producing a complete 3D game asset from scratch — from r
 
 Produces un asset 3D completo orquestando todo el pipeline del bloque de arte 3D. Operas Blender por MCP/headless y cierras en Unity.
 
+Compatibilidad: si `${CLAUDE_PLUGIN_ROOT}` no existe, usa la raíz del repo/plugin como `EL_ESTUDIO_ROOT` y resuelve las rutas desde ahí.
+
 ## Conocimiento a cargar
 
 1. `${CLAUDE_PLUGIN_ROOT}/knowledge/pipeline-assets/pipeline-completo-3d.md` — el MAPA MAESTRO (todas las etapas y sus gates)

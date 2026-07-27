@@ -7,11 +7,14 @@ description: Use when starting a new game from an idea — turns a raw concept i
 
 Llevas una idea cruda hasta un proyecto Unity con el core loop en prototipo. NO saltes etapas: cada una tiene criterio de salida.
 
+Compatibilidad: si `${CLAUDE_PLUGIN_ROOT}` no existe, usa la raíz del repo/plugin como `EL_ESTUDIO_ROOT` y resuelve las rutas desde ahí.
+
 ## Conocimiento a cargar (en este orden, solo lo que la etapa pida)
 
 1. SIEMPRE: `${CLAUDE_PLUGIN_ROOT}/knowledge/gamedev/preproduccion.md` + `${CLAUDE_PLUGIN_ROOT}/knowledge/gamedev/fundamentos-diseno.md`
 2. Al elegir género: `${CLAUDE_PLUGIN_ROOT}/knowledge/gamedev/generos.md` + `${CLAUDE_PLUGIN_ROOT}/knowledge/pipeline/recetas-generos.md`
 3. Al montar el proyecto: `${CLAUDE_PLUGIN_ROOT}/knowledge/pipeline/pipeline-completo.md` (checklist día 0) + `${CLAUDE_PLUGIN_ROOT}/knowledge/pipeline/estructura-proyecto.md`
+4. Si el juego es comercial, móvil o free-to-play: carga `/validar-mercado` antes de abrir Unity.
 
 ## Etapas
 
@@ -28,6 +31,7 @@ Llevas una idea cruda hasta un proyecto Unity con el core loop en prototipo. NO 
 
 ### 3. Proyecto Unity día 0
 - Sigue el checklist de arranque de pipeline-completo.md paso a paso (versión LTS, plantilla URP, settings, git+LFS, estructura de carpetas de estructura-proyecto.md).
+- Si el repo trae `tools/scaffold_unity_day0.py`, úsalo para crear `GDD.md`, `CHECKPOINT.md`, `CORTE.md`, `.gitattributes`, `.gitignore` y smoke test base.
 - Crea también `CHECKPOINT.md` (estado + decisiones + qué sigue) — se actualiza SIEMPRE al final de cada sesión de trabajo.
 - Salida: proyecto compila, primer commit hecho.
 

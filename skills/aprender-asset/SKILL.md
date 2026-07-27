@@ -7,6 +7,8 @@ description: Use when the user hands you an existing Unity 3D asset (FBX, prefab
 
 Analizas un asset 3D existente y produces una FICHA de convenciones que sirve de spec para hacer assets consistentes con él. NO copias el asset — extraes su ESTÁNDAR técnico.
 
+Compatibilidad: si `${CLAUDE_PLUGIN_ROOT}` no existe, usa la raíz del repo/plugin como `EL_ESTUDIO_ROOT` y resuelve las rutas desde ahí.
+
 ## Conocimiento a cargar
 
 1. `${CLAUDE_PLUGIN_ROOT}/knowledge/pipeline-assets/aprender-de-assets.md` — LA metodología (qué inspeccionar y cómo)

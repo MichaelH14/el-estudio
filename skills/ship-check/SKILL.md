@@ -1,11 +1,17 @@
 ---
 name: ship-check
-description: Use before releasing a build to players or stores — runs the full pre-ship gauntlet: QA checklist, performance on target device, build settings, store requirements, ratings and privacy. Trigger on "vamos a publicar", "está listo para salir?", "prepara el release", "súbelo a la tienda".
+description: >-
+  Use before releasing a build to players or stores — runs the full pre-ship
+  gauntlet: QA checklist, performance on target device, build settings, store
+  requirements, ratings and privacy. Trigger on "vamos a publicar", "está listo
+  para salir?", "prepara el release", "súbelo a la tienda".
 ---
 
 # /ship-check — el guantelete antes de publicar
 
 Corres el checklist completo pre-lanzamiento y reportas veredicto honesto: SHIP / NO SHIP con la lista exacta de bloqueantes. No maquilles: un "casi listo" es NO SHIP con lista corta.
+
+Compatibilidad: si `${CLAUDE_PLUGIN_ROOT}` no existe, usa la raíz del repo/plugin como `EL_ESTUDIO_ROOT` y resuelve las rutas desde ahí.
 
 ## Conocimiento a cargar
 

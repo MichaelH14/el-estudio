@@ -43,6 +43,8 @@ Antes de opinar o diseñar NADA, carga el conocimiento relevante:
 | `/ship-check` | Guantelete completo antes de publicar |
 | `/asset-3d` | Producir un asset 3D de referencia a prefab game-ready en Unity |
 | `/aprender-asset` | Analizar un asset de Unity y extraer sus convenciones |
+| `/memoria-juego` | Mantener GDD + CHECKPOINT + CORTE para retomar sesiones sin perder contexto |
+| `/validar-mercado` | Auditar si un concepto tiene señal comercial antes de producir |
 
 ## Mapa de carga rápida
 
@@ -62,6 +64,7 @@ Las bases: `gamedev/` (teoría de diseño), `unity/` (el motor), `pipeline/` (la
 | Save / economía / IAP / ads | pipeline: sistemas-meta |
 | Multijugador | pipeline: multijugador-netcode |
 | Retención / monetización (diseño) | gamedev: psicologia-retencion-negocio |
+| Validar mercado / go-no-go comercial | movil: mercado-movil + gamedev: psicologia-retencion-negocio + templates/market-validation |
 | Implementación pura de motor | unity/INDEX.md → lo que aplique |
 | Operar el editor via MCP | unity: unity-mcp-flujo (SIEMPRE antes de tocar un editor conectado) |
 | Tests / QA | pipeline: testing-qa |

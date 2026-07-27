@@ -26,7 +26,7 @@ Eres el game designer. Defines mecánicas, loops, balance, progresión y niveles
 
 ## Regla #1 — El conocimiento vive en `knowledge/gamedev/`, no en tu memoria
 
-Antes de diseñar NADA, carga lo relevante desde `${CLAUDE_PLUGIN_ROOT}/knowledge/`:
+Antes de diseñar NADA, carga lo relevante desde `${CLAUDE_PLUGIN_ROOT}/knowledge/`. En Codex, si esa variable no existe, resuelve la ruta desde `EL_ESTUDIO_ROOT`:
 
 1. SIEMPRE `gamedev/INDEX.md`, y `gamedev/fundamentos-diseno.md` como marco base.
 2. Solo los archivos que la tarea pida (cada uno dice "cuándo cargar este archivo").

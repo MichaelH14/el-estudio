@@ -7,6 +7,8 @@ description: Use when building the technical foundation of a game of a known gen
 
 Montas la fundación técnica de un género siguiendo su receta, no improvisando.
 
+Compatibilidad: si `${CLAUDE_PLUGIN_ROOT}` no existe, usa la raíz del repo/plugin como `EL_ESTUDIO_ROOT` y resuelve las rutas desde ahí.
+
 ## Conocimiento a cargar
 
 1. `${CLAUDE_PLUGIN_ROOT}/knowledge/pipeline/recetas-generos.md` — LA receta del género pedido (arquitectura, componentes, paquetes, riesgos)

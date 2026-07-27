@@ -2,7 +2,7 @@
 
 > **Cuando cargar este archivo:** cuando hay que FABRICAR un sonido desde primitivas por síntesis — no bajarlo ni grabarlo, sino construirlo con osciladores, envolventes, filtros y modulación — o cuando hay que analizar un sonido de referencia para recrearlo. Aquí va la teoría operativa de la síntesis (bloques, tipos, recetas por sonido de juego) y los comandos concretos para hacerlo por código. Las cuatro **vías** de conseguir SFX y el mapeo acción→preset de los generadores tipo sfxr están en [ver: crear-sfx]; el catálogo de herramientas/licencias en [ver: herramientas-recursos-audio]; el acabado/entrega del asset en [ver: audio-a-juego]; el *qué sonido poner y por qué* (funciones, prioridad, silencio) en [ver: gamedev/audio]; la implementación en Unity en [ver: unity/audio-unity]. El stack de síntesis por código a fondo (SuperCollider/Csound/SoX scripting) en [ver: hacer-audio-por-codigo]. Aquí: **cómo se piensa y se arma un sonido de la nada.**
 
-Regla de encuadre: la síntesis es la vía de **máximo control y cero coste de licencia** — un sonido sintetizado es 100% tuyo, sin CC ni royalties ni entrenamiento-de-IA que auditar [ver: crear-sfx, licencias]. El precio es tiempo y criterio. Para SFX retro/UI, un generador sfxr resuelve en segundos [ver: crear-sfx]; para un sonido con identidad y que no exista en ninguna biblioteca, se sintetiza desde los bloques de abajo.
+Regla de encuadre: la síntesis es la vía de **máximo control y cero coste de licencia** — un sonido sintetizado es 100% tuyo, sin CC ni royalties ni entrenamiento-de-IA que auditar [ver: crear-sfx] (licencias). El precio es tiempo y criterio. Para SFX retro/UI, un generador sfxr resuelve en segundos [ver: crear-sfx]; para un sonido con identidad y que no exista en ninguna biblioteca, se sintetiza desde los bloques de abajo.
 
 ---
 
@@ -149,7 +149,7 @@ Detalles que separan un SFX pobre de uno con pegada:
 
 ## Layering: la anatomía de un SFX con pegada
 
-Un SFX sintetizado con impacto casi nunca es un oscilador — son 2–3 capas con roles distintos, alineadas por el ataque y mezcladas. La regla de las tres capas está en [ver: crear-sfx, layering]; aquí, cómo **sintetizar cada capa** en vez de samplearla:
+Un SFX sintetizado con impacto casi nunca es un oscilador — son 2–3 capas con roles distintos, alineadas por el ataque y mezcladas. La regla de las tres capas está en [ver: crear-sfx] (layering); aquí, cómo **sintetizar cada capa** en vez de samplearla:
 
 | Capa | Rol | Cómo sintetizarla |
 |---|---|---|

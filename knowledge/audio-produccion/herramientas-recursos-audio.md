@@ -19,7 +19,7 @@ La regla de fondo la marca la teoría: audio desde el primer prototipo con place
 
 ## Editar y grabar: Audacity y alternativas
 
-**Audacity 3.7.8** (verificado 2026-07-20, GPL v3, gratis, Windows/macOS/Linux). Editor multipista de audio. Es lo que usas para todo lo que NO sea generar ni componer: limpiar una grabación, recortar la cola de un SFX, normalizar niveles, hacer un loop, montar capas [ver: gamedev/audio, layering].
+**Audacity 3.7.8** (verificado 2026-07-20, GPL v3, gratis, Windows/macOS/Linux). Editor multipista de audio. Es lo que usas para todo lo que NO sea generar ni componer: limpiar una grabación, recortar la cola de un SFX, normalizar niveles, hacer un loop, montar capas [ver: gamedev/audio] (layering).
 
 Flujo mínimo en Audacity para preparar un asset:
 1. Importar/grabar → **recortar** silencios y colas (los pasos deben durar < ~0.3 s [ver: gamedev/audio]).

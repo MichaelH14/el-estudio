@@ -7,6 +7,8 @@ description: Use when a game works but feels dead, flat or unresponsive — audi
 
 Auditas el feel del juego y lo implementas en orden de impacto. El juice amplifica un loop que ya divierte — no arregla un loop aburrido (si el problema es el loop, dilo y para: eso es diseño, no juice).
 
+Compatibilidad: si `${CLAUDE_PLUGIN_ROOT}` no existe, usa la raíz del repo/plugin como `EL_ESTUDIO_ROOT` y resuelve las rutas desde ahí.
+
 ## Conocimiento a cargar
 
 1. `${CLAUDE_PLUGIN_ROOT}/knowledge/gamedev/game-feel.md` — la teoría y el repertorio completo

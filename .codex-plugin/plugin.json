@@ -1,0 +1,38 @@
+{
+  "name": "el-estudio",
+  "version": "1.8.1",
+  "description": "Estudio de videojuegos para Codex y Claude Code: conocimiento operativo, agentes, skills, plantillas y validadores para crear juegos con Unity y Blender.",
+  "author": {
+    "name": "Michael Hiraldo",
+    "url": "https://github.com/MichaelH14"
+  },
+  "homepage": "https://github.com/MichaelH14/el-estudio",
+  "repository": "https://github.com/MichaelH14/el-estudio",
+  "license": "MIT",
+  "keywords": [
+    "gamedev",
+    "unity",
+    "blender",
+    "game-development",
+    "ai-agents"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "El Estudio",
+    "shortDescription": "Estudio IA para videojuegos con Unity y Blender.",
+    "longDescription": "Conocimiento operativo, skills, plantillas, validadores y contratos de trabajo para que Codex actúe como un pequeño estudio de videojuegos desde idea hasta build.",
+    "developerName": "Michael Hiraldo",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/MichaelH14/el-estudio",
+    "defaultPrompt": [
+      "Usa El Estudio para empezar un juego móvil.",
+      "Crea un proyecto Unity día 0.",
+      "Audita si este loop vale la pena."
+    ],
+    "brandColor": "#7C3AED"
+  }
+}

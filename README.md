@@ -2,7 +2,7 @@
 
 Plugin de Claude Code que convierte a un agente de IA en un **estudio de videojuegos completo** — diseño, programación en Unity, arte 3D y 2D, animación, audio y publicación — desde la idea hasta la tienda.
 
-**Estado:** ✅ Completo · **v1.8.0** · 159 archivos de conocimiento (45.600 líneas) en 16 bases · 7 agentes · 7 skills.
+**Estado:** ✅ Completo · **v1.8.1** · 159 archivos de conocimiento (45.600 líneas) en 16 bases · 7 agentes · 8 skills.
 
 ---
 
@@ -81,6 +81,7 @@ El plugin es un estudio con roles. El `director` orquesta y enruta; los especial
 | `/asset-3d` | Producir un asset 3D de referencia a prefab game-ready |
 | `/aprender-asset` | Analizar un asset de Unity y extraer sus convenciones |
 | `/memoria-juego` | Mantener el GDD + CHECKPOINT de un juego para retomarlo en cualquier sesión |
+| `/validar-mercado` | Auditar mercado, competencia, canal y go/no-go antes de producir |
 
 ## Capacidades verificadas contra herramientas reales
 
@@ -92,10 +93,28 @@ El plugin no solo sabe, también **hace**, y su conocimiento está verificado ej
 
 ## Instalación
 
+### Claude Code
+
 ```
 /plugin marketplace add MichaelH14/el-estudio
 /plugin install el-estudio@michael-games
 ```
+
+### Codex
+
+El repo incluye `.codex-plugin/plugin.json` y `AGENTS.md`. En Codex, la raíz del repo funciona como `EL_ESTUDIO_ROOT`; cualquier referencia a `${CLAUDE_PLUGIN_ROOT}` se resuelve contra esa raíz.
+
+## Herramientas operativas
+
+```bash
+python3 tools/validate_repo.py
+python3 tools/doctor.py
+python3 tools/scaffold_unity_day0.py ../MiJuego --game-name "Mi Juego"
+```
+
+- `tools/validate_repo.py` audita manifiestos, skills, índices, links y contrato mínimo de conocimiento.
+- `tools/doctor.py` revisa dependencias locales: GitHub CLI, Blender, Unity y puertos MCP comunes.
+- `tools/scaffold_unity_day0.py` crea la memoria viva y el overlay inicial para un proyecto Unity.
 
 Los plugins cargan al arrancar la sesión.
 

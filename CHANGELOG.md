@@ -2,6 +2,9 @@
 
 Registro de versiones. El plugin se construyó fase por fase; cada fase se investigó, se auditó adversarialmente y se verificó (los operadores de Blender contra el binario real, los comandos de audio ejecutándolos).
 
+## v1.8.1 — 2026-07-27
+Tooling de producción: compatibilidad Codex con `.codex-plugin/plugin.json` y `AGENTS.md`; conteos corregidos; skill `/validar-mercado`; validadores, doctor local, scaffold Unity día 0, CI, plantillas de memoria/provenance/analytics/mercado y caso de referencia Nightfall Protocol.
+
 ## v1.8.0 — 2026-07-21
 Audio a fondo: `audio-produccion/` de 4 a 14 archivos (síntesis y diseño de sonido desde cero, foley, teoría musical, producción, música adaptativa, chiptune, dirección/mezcla, voz, middleware FMOD/Wwise, y hacer-audio-por-código). Stack de audio por código montado y verificado (SoX + FluidSynth + soundfont GM + mido + ffmpeg): el agente compuso música y sintetizó SFX reales, headless.
 
