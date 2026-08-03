@@ -26,7 +26,7 @@ Este ejemplo documenta el tipo de evidencia que El Estudio debe exigir cuando co
 
 ## Evidencia Real De Este Caso
 
-- Proyecto: `~/UnityProjects/NightfallProtocolMVP` (fuera del plugin, sin git).
+- Proyecto: `~/UnityProjects/NightfallProtocolMVP` (fuera del plugin, repo propio privado con LFS desde 2026-08-03).
 - Editor: Unity `6000.3.18f1`, 2026-07-24.
 - `NightfallSmokeTest.cs` en este directorio es **copia literal** del que corrió en el proyecto
   (`Assets/NightfallProtocol/Editor/NightfallSmokeTest.cs`), no una reescritura.
