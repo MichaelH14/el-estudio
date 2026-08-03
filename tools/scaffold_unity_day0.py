@@ -5,11 +5,17 @@ from __future__ import annotations
 
 import argparse
 import datetime as datetime_module
+import json
 import shutil
 from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+TEST_FRAMEWORK_PACKAGE = "com.unity.test-framework"
+EDITOR_GLOBS = [
+    "/Applications/Unity/Hub/Editor/*/Unity.app/Contents/Resources/PackageManager/BuiltInPackages",
+    "/Applications/Unity/Unity.app/Contents/Resources/PackageManager/BuiltInPackages",
+]
 UNITY_TEMPLATE_ROOT = REPO_ROOT / "templates" / "unity-day0"
 MEMORY_TEMPLATE_ROOT = REPO_ROOT / "templates" / "game-memory"
 EXTRA_TEMPLATE_FILES = [
@@ -72,6 +78,46 @@ def scaffold(destination_root: Path, game_name: str, force: bool) -> tuple[int, 
     return copied_count, skipped_count
 
 
+def detect_test_framework_version() -> str | None:
+    """Version del test framework que trae el editor instalado. None si no hay editor."""
+    versions: list[str] = []
+    for pattern in EDITOR_GLOBS:
+        root = Path(pattern.split("*")[0])
+        if not root.exists():
+            continue
+        for manifest_path in root.glob(pattern[len(str(root)) + 1:] + f"/{TEST_FRAMEWORK_PACKAGE}/package.json"):
+            try:
+                versions.append(json.loads(manifest_path.read_text(encoding="utf-8"))["version"])
+            except (ValueError, KeyError, OSError):
+                continue
+    return sorted(versions)[-1] if versions else None
+
+
+def ensure_test_framework(destination_root: Path) -> str:
+    """El smoke test EditMode necesita com.unity.test-framework; sin el, los scripts no compilan."""
+    manifest_path = destination_root / "Packages" / "manifest.json"
+    if not manifest_path.exists():
+        return "manifest.json ausente (carpeta vacia): anade com.unity.test-framework al crear el proyecto Unity."
+
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except ValueError:
+        return "manifest.json ilegible: revisa com.unity.test-framework a mano."
+
+    dependencies = manifest.setdefault("dependencies", {})
+    if TEST_FRAMEWORK_PACKAGE in dependencies:
+        return f"{TEST_FRAMEWORK_PACKAGE} ya presente ({dependencies[TEST_FRAMEWORK_PACKAGE]})."
+
+    version = detect_test_framework_version()
+    if version is None:
+        return f"No se detecto ningun editor Unity: anade {TEST_FRAMEWORK_PACKAGE} a Packages/manifest.json a mano."
+
+    dependencies[TEST_FRAMEWORK_PACKAGE] = version
+    manifest["dependencies"] = dict(sorted(dependencies.items()))
+    manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    return f"{TEST_FRAMEWORK_PACKAGE} {version} anadido a Packages/manifest.json."
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("destination", type=Path, help="Unity project folder or empty destination folder.")
@@ -87,6 +133,7 @@ def main() -> int:
     print(f"Scaffold: {destination_root}")
     print(f"Copied: {copied_count}")
     print(f"Skipped: {skipped_count}")
+    print(f"Test framework: {ensure_test_framework(destination_root)}")
     print("Next: open in Unity, run Day0SmokeTest, then update CHECKPOINT.md with evidence.")
     return 0
 

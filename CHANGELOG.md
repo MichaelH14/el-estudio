@@ -2,6 +2,9 @@
 
 Registro de versiones. El plugin se construyó fase por fase; cada fase se investigó, se auditó adversarialmente y se verificó (los operadores de Blender contra el binario real, los comandos de audio ejecutándolos).
 
+## v1.8.2 — 2026-08-03
+Arreglado el scaffold día 0: el smoke test de plantilla rompía la compilación de un proyecto Unity 6 nuevo (`error CS0246: NUnit`) porque faltaban el `.asmdef` de tests y el paquete `com.unity.test-framework`. Ahora `templates/unity-day0` incluye `ElEstudio.Tests.EditMode.asmdef` y `scaffold_unity_day0.py` añade el paquete al `manifest.json` con la versión del editor instalado. Verificado en proyecto limpio (Unity 6000.3.18f1): 0 errores de compilación, `Day0SmokeTest` descubierto y pasando. Además, el smoke test de `examples/nightfall-protocol-mvp-review/` ahora es copia literal del que realmente corrió, con el comando y los logs de evidencia.
+
 ## v1.8.1 — 2026-07-27
 Tooling de producción: compatibilidad Codex con `.codex-plugin/plugin.json` y `AGENTS.md`; conteos corregidos; skill `/validar-mercado`; validadores, doctor local, scaffold Unity día 0, CI, plantillas de memoria/provenance/analytics/mercado y caso de referencia Nightfall Protocol.
 

@@ -24,6 +24,25 @@ Este ejemplo documenta el tipo de evidencia que El Estudio debe exigir cuando co
 - Smoke test confirma objetos críticos.
 - `CHECKPOINT.md` registra qué está verificado y qué no.
 
+## Evidencia Real De Este Caso
+
+- Proyecto: `~/UnityProjects/NightfallProtocolMVP` (fuera del plugin, sin git).
+- Editor: Unity `6000.3.18f1`, 2026-07-24.
+- `NightfallSmokeTest.cs` en este directorio es **copia literal** del que corrió en el proyecto
+  (`Assets/NightfallProtocol/Editor/NightfallSmokeTest.cs`), no una reescritura.
+- Ejecución real, headless:
+
+  ```bash
+  /Applications/Unity/Hub/Editor/6000.3.18f1/Unity.app/Contents/MacOS/Unity \
+    -quit -batchmode -nographics \
+    -projectPath ~/UnityProjects/NightfallProtocolMVP \
+    -executeMethod NightfallProtocol.Editor.NightfallSmokeTest.Run
+  ```
+
+- Salida registrada en `Logs/nightfall-smoke.log`:
+  `Nightfall smoke test passed: scene builds, agents spawn, objectives exist, and paths resolve.`
+- `Logs/nightfall-playtest.log` (play mode, 2026-07-24 19:10): 0 excepciones y 0 NullReference.
+
 ## Huecos Detectados Para El Plugin
 
 - Necesita plantilla Unity día 0 con smoke test.
