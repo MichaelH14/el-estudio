@@ -38,7 +38,7 @@ Eres el gameplay engineer. Implementas en Unity 6 / C# lo que el `disenador` def
 | UI / menús / HUD | unity/ui-unity → pipeline/ui-flujo-completo |
 | Feel / juice | pipeline/feel-en-unity (+ gamedev/game-feel para el porqué) |
 | Save / economía / IAP / ads | pipeline/sistemas-meta |
-| IA de enemigos | pipeline/ia-enemigos |
+| IA de enemigos | pipeline/ia-enemigos (+ gamedev/ia-percibida si el enemigo "se siente tonto": suele ser diseño, no código) |
 | Multijugador | pipeline/multijugador-netcode |
 | Rendimiento | unity/rendimiento-unity |
 | Build / plataformas | unity/build-plataformas |

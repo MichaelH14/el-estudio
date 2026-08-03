@@ -150,6 +150,43 @@ Pitch ±5–10% + volumen ±15% + 2–4 clips alternativos = el mismo golpe nunc
 
 Asset nativo (`Create > Audio > Audio Random Container`, introducido en 2023.1, presente en Unity 6) que hace esa variación sin código: lista de clips con randomización de **volumen y pitch por rangos**, modos de reproducción **Sequential / Shuffle** (no repite hasta agotar la lista) **/ Random**, trigger **Manual** (suena con `AudioSource.Play()`) o **Automatic** (Pulse = intervalo fijo, Offset = pausa entre clips), y conteo de loops. Se asigna directo en el campo AudioClip del AudioSource; su volumen es aditivo con el del source. Úsalo para pasos, impactos, ambientes con variantes.
 
+### Eventos compuestos: capas disparadas por la simulación
+
+Todo lo anterior varía **un** sonido. El salto de calidad siguiente es dejar de tratar un suceso físico largo (un árbol que cae, un derrumbe, una puerta reventada, un choque de coche) como **un clip** y tratarlo como **un evento con fases**, cada una disparada cuando la física llega ahí.
+
+**El problema que resuelve — "peso falso":** un clip largo pregrabado no reacciona, solo se reproduce. Si el árbol tarda más en caer porque chocó con otro, o si el jugador lo tumbó de un golpe flojo, el audio va por su lado y el objeto se siente ingrávido. El desajuste es sutil y el jugador no sabe nombrarlo, pero lo oye.
+
+**La receta:**
+
+1. **Parte el evento en fases temporales**, no en frecuencias: `crack` (la rotura empieza) → `fall` (el recorrido en el aire) → `impact` (el golpe contra el suelo).
+2. **Cada fase con 3-4 variantes.** La combinatoria es multiplicativa: 4 × 4 × 4 = **64 combinaciones** con solo 12 clips. Súmale pitch/volumen aleatorios y la repetición literal desaparece.
+3. **Cada fase la dispara la simulación, no un timeline.** El `fall` empieza cuando el rigidbody empieza a rotar; el `impact` en el `OnCollisionEnter` real. Así el audio dura lo que dure la caída.
+4. **Los parámetros salen de magnitudes físicas reales**, no de constantes: la fuerza aplicada y la velocidad de rotura eligen la variante de `crack` y su volumen; la energía del impacto elige la de `impact`.
+
+```csharp
+// Fase de impacto: la variante y el volumen los decide la física, no el diseñador
+void OnCollisionEnter(Collision collision)
+{
+    // impulse = fuerza real del choque; relativeVelocity = qué tan rápido se encontraron
+    float energy = collision.impulse.magnitude;
+    float t = Mathf.InverseLerp(minImpactEnergy, maxImpactEnergy, energy);   // 0..1 normalizado
+
+    AudioClip clip = impactLayers[Mathf.Clamp(
+        Mathf.FloorToInt(t * impactLayers.Length), 0, impactLayers.Length - 1)];
+
+    source.pitch = Mathf.Lerp(1.08f, 0.92f, t);          // más energía = más grave = más masa
+    source.PlayOneShot(clip, volumeCurve.Evaluate(t));   // AnimationCurve, no lineal
+}
+```
+
+- **Sin cortes abruptos entre fases.** Si una capa sigue sonando cuando entra la siguiente, se solapan (no se cortan): el `crack` puede colear bajo el `fall`. Cortar en seco delata el sistema más que cualquier otra cosa.
+- **Encadenado con precisión de muestra** cuando la siguiente fase tiene un momento conocido: `source.PlayScheduled(AudioSettings.dspTime + delay)` en vez de una corrutina (§5 — `dspTime` es el único reloj fiable para audio).
+- **Granularidad creciente**: el `impact` de un tronco gana mucho añadiendo antes chasquidos individuales de ramas, disparados por los colliders secundarios que van tocando el suelo. Es la misma idea aplicada un nivel más abajo.
+- **Coste**: son N AudioSources simultáneos por evento en vez de uno. Con eventos raros (talar un árbol) es irrelevante; si el evento es frecuente, cuenta las voces (siguiente subsección) y limita variantes en móvil [ver: movil/unity-movil-rendimiento].
+- Cuándo NO hacerlo: acciones cortas y de duración fija (un click de UI, un salto). Ahí un clip con variación ya es correcto — esto es para sucesos cuya **duración y violencia las decide la simulación**.
+
+El diseño de las capas como material sonoro (grabarlas, sintetizarlas, la regla de las tres capas) está en [ver: audio-produccion/crear-sfx]; aquí va lo que el motor tiene que hacer con ellas.
+
 ### Voces y prioridad
 
 Project Settings > Audio: **Max Real Voices** (voces audibles simultáneas; cada frame ganan las más fuertes) y **Max Virtual Voices** (gestionadas sin sonar). Defaults del editor: 32 reales / 512 virtuales (confirmar en Project Settings del proyecto). Si un SFX crítico "se corta" con mucha carga, bájale el número de `priority` (0 = nunca robado) y sube el de los ambientales.
@@ -307,4 +344,5 @@ Force To Mono en SFX 3D + Vorbis con Quality bajada de oído + Override sample r
 - "The right way to make a volume slider in Unity" — John Leonard French — fórmula Log10×20 y rango 0.0001–1, por qué falla el mapeo lineal.
 - "Ultimate Guide to PlayScheduled in Unity" — John Leonard French — stitching sin gaps, duración por samples, compases con dspTime, AudioListener.pause.
 - "How to fade audio in Unity: I tested every method" — John Leonard French — comparativa fade source vs mixer vs snapshot; ganador: mixer + conversión log.
+- **Eventos compuestos dirigidos por física** — devlog de @bezdiga.dev (Instagram, 2026) sobre el sistema de tala de árboles de su juego en Unity: capas crack/fall/impact con variantes (64+ combinaciones), la capa de crack controlada por la fuerza aplicada y la velocidad de rotura, y todas las capas sincronizadas con la simulación física para evitar cortes abruptos. ⚠️ Devlog, no doc oficial: la técnica está descrita por su autor; el código de esta sección usa APIs verificadas de Unity (`Collision.impulse`, `Collision.relativeVelocity`, `PlayScheduled`).
 - FMOD — Wikipedia + FMOD for Unity (Unity Asset Store) — tiers de licencia por presupuesto (Indie < $600k), plugin gratis, min Unity 2019.4.

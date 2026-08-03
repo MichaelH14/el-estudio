@@ -2,6 +2,12 @@
 
 Registro de versiones. El plugin se construyó fase por fase; cada fase se investigó, se auditó adversarialmente y se verificó (los operadores de Blender contra el binario real, los comandos de audio ejecutándolos).
 
+## v1.8.3 — 2026-08-03
+Conocimiento nuevo destilado de tres fuentes que trajo Michael, verificado contra fuentes primarias:
+- **`gamedev/ia-percibida.md`** (archivo nuevo, base gamedev de 14 a 15): la ilusión de inteligencia como objetivo de diseño. Reglas de targeting exactas de los cuatro fantasmas de Pac-Man, F.E.A.R. contra el paper original de Orkin (es GOAP sobre una FSM de tres estados, no una FSM grande — corrige un mito muy repetido; el flanqueo y la pinza eran efectos colaterales, y los barks son la capa que hace visible la intención), Alien: Isolation (director que sabe / alien que busca, desbloqueo de ramas como ilusión de aprendizaje y la salvaguarda de no premiar la muerte del jugador), qué rompe la ilusión, y NPCs con LLM con sus límites reales. Enlazado desde `pipeline/ia-enemigos` y desde los agentes `director`, `disenador` e `ingeniero`.
+- **`unity/audio-unity.md`**: eventos sonoros compuestos disparados por la simulación física — partir un suceso largo en fases (crack/fall/impact) con variantes, derivar volumen y variante de magnitudes físicas reales (`Collision.impulse`), y encadenar con `PlayScheduled` sin cortes. Resuelve el "peso falso" del clip largo que no reacciona.
+- **`arte-2d/animacion-2d.md`**: dibujar con la animación reproduciéndose (live draw) para VFX de avance continuo (fuego, humo, viento) frente al onion skin, que sirve para animación pose a pose. Nativo en GameMaker Studio 2; en Aseprite 1.3+ vía la extensión Live Draw.
+
 ## v1.8.2 — 2026-08-03
 Arreglado el scaffold día 0: el smoke test de plantilla rompía la compilación de un proyecto Unity 6 nuevo (`error CS0246: NUnit`) porque faltaban el `.asmdef` de tests y el paquete `com.unity.test-framework`. Ahora `templates/unity-day0` incluye `ElEstudio.Tests.EditMode.asmdef` y `scaffold_unity_day0.py` añade el paquete al `manifest.json` con la versión del editor instalado. Verificado en proyecto limpio (Unity 6000.3.18f1): 0 errores de compilación, `Day0SmokeTest` descubierto y pasando. Además, el smoke test de `examples/nightfall-protocol-mvp-review/` ahora es copia literal del que realmente corrió, con el comando y los logs de evidencia.
 

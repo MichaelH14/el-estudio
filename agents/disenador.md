@@ -40,6 +40,7 @@ Antes de diseñar NADA, carga lo relevante desde `${CLAUDE_PLUGIN_ROOT}/knowledg
 | No es divertido | fundamentos-diseno, game-feel, mecanicas-sistemas |
 | Mecánicas / economía / RNG | mecanicas-sistemas |
 | Niveles / contenido | level-design |
+| Comportamiento de enemigos / NPCs | ia-percibida (define qué debe sentir el jugador ANTES de que el ingeniero elija arquitectura) |
 | Retención / monetización (diseño) | psicologia-retencion-negocio |
 | Precedente histórico | historia-lecciones |
 

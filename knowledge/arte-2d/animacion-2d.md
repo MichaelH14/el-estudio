@@ -147,6 +147,22 @@ Los efectos "no doblan" → casi siempre **frame a frame**, incluso en juegos de
 - **Hitstop y screen shake** venden más que añadir frames al efecto — [ver: gamedev/animacion §2] y [ver: gamedev/game-feel]. Un hit de 3 frames + 4 frames de hitstop pega más que uno de 10 frames sin pausa.
 - **Smear como VFX barato**: para un strike de 1–2 frames, el propio smear del arma ES el efecto (Castlevania) — no siempre necesitas una capa de VFX aparte.
 
+### Dibujar sobre la animación en marcha (live draw)
+
+Hay dos familias de animación 2D y **se dibujan distinto**:
+
+| Familia | Qué es | Cómo se trabaja |
+|---|---|---|
+| **Pose a pose** (key pose) | Walk, attack, idle: hay poses clave que definen el movimiento | Dibujar keys → onion skin (§6) → rellenar in-betweens |
+| **Forward animated** (avance continuo) | Fuego, humo, agua, viento, hierba, auras, portales: no hay "pose correcta", hay **flujo** | Onion skin sirve de poco: lo que importa es cómo se mueve el conjunto, no dónde está un frame respecto al vecino |
+
+Para la segunda familia la técnica es **dibujar mientras la animación se reproduce en loop**: creas los frames vacíos, le das a reproducir, y pintas/borras encima con el loop corriendo. Ves el movimiento real mientras lo construyes, en vez de imaginarlo frame a frame y descubrir al exportar que parpadea o que el flujo no arranca. Para una llama o una mata de hierba al viento esto cambia por completo la velocidad de iteración.
+
+- **GameMaker Studio 2**: está de serie en su editor de sprites — añade frames, dale a animar, dibuja.
+- **Aseprite**: **no es nativo** (es una petición vieja de la comunidad, issue #1320). Lo resuelve la extensión **Live Draw** (Devkidd, itch.io, v1.5.2 verificado 2026-08-03), solo para **Aseprite 1.3+**: menú `Edit > Live Draw`, botón *Play Animation* y botón *Start Drawing*. ⚠️ Por una limitación del propio Aseprite el click izquierdo no dibuja durante la reproducción — hay que usar ese botón (tiene hotkey configurable). Es de pago.
+- **El flujo**: bloquea la silueta general en 3-4 frames con el loop corriendo, mira el conjunto en movimiento, y solo después limpia píxel a píxel. Al revés (limpiar primero) se pierde el tiempo puliendo frames cuyo timing todavía no está.
+- Combina con la regla del loop perfecto (§5): el frame que vendría **después** del último debe ser el primero. Con el loop corriendo mientras dibujas, el tartamudeo se ve al instante en vez de descubrirse en Unity.
+
 ---
 
 ## 9. Esqueletal 2D en profundidad: cuándo compensa y cómo
@@ -249,6 +265,8 @@ Dos caminos según la familia (§1). Detalle de importación y settings en [ver:
 
 **Fuentes web (verificadas por fetch, jul-2026):**
 - **Onion Skinning** — Aseprite Docs oficial (`aseprite.org/docs/onion-skinning`) — F3 / icono timeline; nº de frames prev/next; tinte rojo/azul; config vía "Configure Timeline". (Rangos de opacidad/modos NO detallados en la página — confirmar en UI.)
+- **Live Draw** — extensión de Aseprite de Devkidd (devkidd.itch.io/live-draw, v1.5.2; hilo oficial en community.aseprite.org) — dibujar con la reproducción en marcha: requiere Aseprite 1.3+, menú `Edit > Live Draw`, botones *Play Animation* / *Start Drawing* con hotkey (el click izquierdo no dibuja durante playback por limitación del propio Aseprite). Es de pago. La feature SÍ es nativa en el editor de sprites de GameMaker Studio 2; en Aseprite sigue siendo petición abierta (issue #1320). Verificado 2026-08-03.
+- **Origen del apartado de forward-animated VFX**: reel de @ottermakegames (Instagram, 2026) mostrando la técnica en GMS2 y su equivalente en Aseprite.
 - **Tags** — Aseprite Docs oficial (`aseprite.org/docs/tags`) — Frame > Tags > New Tag / F2×2; Animation Direction: Forward / Reverse / Ping-pong; un archivo con múltiples animaciones.
 - **Exporting a Sprite Sheet / CLI** — Aseprite Docs oficial (`aseprite.org/docs/sprite-sheet` + `aseprite.org/docs/cli`) — `--sheet`, `--data`, `--sheet-type` (horizontal/vertical/rows/columns/packed), `--sheet-pack`, `--format` json-hash/json-array, `--list-tags` (frameTags), `--split-layers`, `--inner-padding`, `--shape-padding`, `--trim`, `--filename-format` ({layer}{frame}{tag}{title}), `--scale`.
 - **2D Animation package** — Unity Docs `com.unity.2d.animation@10.0` (index + CharacterRig + `SkinEdToolsShortcuts.html`) — rig/animar 2D; PSD Importer → Prefab de sprites; Skinning Editor: Create Bone (Shift+E), Split Bone (Shift+R), Edit Bone (Shift+W), Auto Geometry (Shift+A), Edit Geometry (Shift+S), Create Vertex (Shift+D), Create Edge (Shift+G), Split Edge (Shift+H), Auto Weights (Shift+Z), Weight Slider (Shift+X), Weight Brush (Shift+N), Bone Influence (Shift+V), Sprite Influence (Shift+M), Preview Pose (Shift+Q), Reset Pose (Shift+1) — nombres y shortcuts verificados en la doc oficial.

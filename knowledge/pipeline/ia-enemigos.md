@@ -2,7 +2,7 @@
 
 > **Cuando cargar este archivo:** al implementar cualquier enemigo o NPC que percibe, decide, se mueve o ataca — pathfinding (NavMesh 3D o grid 2D), FSM/behavior trees, percepción, spawners/oleadas o pacing tipo AI Director. Unity 6.x/URP.
 
-Archivo puente: el QUÉ/POR QUÉ de diseño está en `gamedev/` y los patrones C#/física en `unity/`; aquí está la unión concreta. Estado de paquetes verificado a julio 2026.
+Archivo puente: el QUÉ/POR QUÉ de diseño está en `gamedev/` y los patrones C#/física en `unity/`; aquí está la unión concreta. ⚠️ Antes de elegir arquitectura, pasa por [ver: gamedev/ia-percibida]: define qué debe SENTIR el jugador — casi siempre el enemigo que se siente tonto no necesita mejor cerebro, sino mejor nivel, telegrafía o barks. Estado de paquetes verificado a julio 2026.
 
 ## 1. Decisión inicial: qué stack según el juego
 
@@ -278,4 +278,4 @@ void Update()
 - **Steering Behaviors for Autonomous Characters** — Craig Reynolds (red3d.com/cwr/steer, paper 1999 + OpenSteer) — vocabulario canónico: seek/flee, pursue/evade, wander, separation/alignment/cohesion, obstacle avoidance.
 - **Game AI Pro (gameaipro.com, capítulos gratuitos)** — Champandard & Dunstan (Behavior Tree Starter Kit), Graham (Utility Theory), Dill (Dual-Utility), Hanlon & Watts (Dragon Age Inquisition), Walsh (Splinter Cell Blacklist perception), Welsh (Crytek Target Tracks), Sunshine-Hill (LOD Trader), Zubek (1000 NPCs at 60 FPS) — el canon de BT, utility, percepción y AI LOD.
 - **Introduction to A*** — Red Blob Games (Amit Patel) — BFS/Dijkstra/greedy/A*, f = g + h, heurísticas de grid, "el diseño del grafo importa más que el algoritmo".
-- **Base sintetizada:** [ver: unity/csharp-patrones] (FSM base, pooling, runtime sets, event channels, cero allocs), [ver: unity/fisica-unity] (queries/LayerMask/triggers, Rigidbody kinematic, NonAlloc), [ver: gamedev/mecanicas-sistemas] (tablas de pesos, percepción del azar), [ver: gamedev/animacion] + [ver: gamedev/game-feel] (telegraphing, anatomía de ataque), [ver: gamedev/fundamentos-diseno] (flow/pacing), [ver: gamedev/level-design] (encounter design).
+- **Base sintetizada:** [ver: gamedev/ia-percibida] (inteligencia percibida: la capa de diseño sobre todo lo de aquí), [ver: unity/csharp-patrones] (FSM base, pooling, runtime sets, event channels, cero allocs), [ver: unity/fisica-unity] (queries/LayerMask/triggers, Rigidbody kinematic, NonAlloc), [ver: gamedev/mecanicas-sistemas] (tablas de pesos, percepción del azar), [ver: gamedev/animacion] + [ver: gamedev/game-feel] (telegraphing, anatomía de ataque), [ver: gamedev/fundamentos-diseno] (flow/pacing), [ver: gamedev/level-design] (encounter design).

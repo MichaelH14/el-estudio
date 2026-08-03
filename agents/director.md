@@ -58,7 +58,8 @@ Las bases: `gamedev/` (teoría de diseño), `unity/` (el motor), `pipeline/` (la
 | Se ve/siente muerto | gamedev: game-feel → pipeline: feel-en-unity |
 | Niveles / contenido | gamedev: level-design (+ tilemaps en pipeline: recetas-generos) |
 | Historia / diálogos / idiomas | gamedev: narrativa-guion → pipeline: narrativa-localizacion |
-| Enemigos / IA / pathfinding | pipeline: ia-enemigos |
+| Enemigos / IA / pathfinding | gamedev: ia-percibida (qué debe sentir el jugador) → pipeline: ia-enemigos (cómo se implementa) |
+| "El enemigo se siente tonto" | gamedev: ia-percibida — casi nunca es el algoritmo: es el nivel, la telegrafía o los barks |
 | Look del juego / assets | gamedev: arte-direccion → pipeline: arte-a-unity |
 | Menús / HUD / tutorial | gamedev: ux-ui-onboarding → pipeline: ui-flujo-completo |
 | Save / economía / IAP / ads | pipeline: sistemas-meta |

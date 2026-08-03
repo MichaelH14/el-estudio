@@ -92,6 +92,7 @@ Ver frames vecinos translúcidos como referencia mientras dibujas el actual.
 - **Toggle:** `F3` o el ícono en la timeline.
 - **Configurable:** cuántos frames **previos** y **siguientes** mostrar, y el **tinte rojo/azul** (rojo = frames anteriores, azul = posteriores; convención de animación tradicional) desde el menú del ícono.
 - Uso: reduce prev/next a 1–2 para timing fino; súbelo para ver el arco completo de un ciclo. Se combina con el Preview Window (Play en loop) para juzgar el movimiento real, no el frame estático [ver: animacion-2d].
+- **Límite:** el onion skin sirve para animación **pose a pose**. Para VFX de avance continuo (fuego, humo, viento, hierba) lo que hace falta es dibujar **con el loop reproduciéndose**, y eso Aseprite no lo trae de fábrica: se resuelve con la extensión **Live Draw** (requiere 1.3+). Cuándo aplica cada cosa: [ver: animacion-2d §8].
 
 ---
 

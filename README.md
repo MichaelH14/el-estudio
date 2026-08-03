@@ -2,7 +2,7 @@
 
 Plugin de Claude Code que convierte a un agente de IA en un **estudio de videojuegos completo** — diseño, programación en Unity, arte 3D y 2D, animación, audio y publicación — desde la idea hasta la tienda.
 
-**Estado:** ✅ Completo · **v1.8.2** · 159 archivos de conocimiento (45.600 líneas) en 16 bases · 7 agentes · 8 skills.
+**Estado:** ✅ Completo · **v1.8.3** · 160 archivos de conocimiento (45.800 líneas) en 16 bases · 7 agentes · 8 skills.
 
 ---
 
