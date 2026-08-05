@@ -1,6 +1,6 @@
 {
   "name": "el-estudio",
-  "version": "1.8.3",
+  "version": "1.8.4",
   "description": "Estudio de videojuegos para Codex y Claude Code: conocimiento operativo, agentes, skills, plantillas y validadores para crear juegos con Unity y Blender.",
   "author": {
     "name": "Michael Hiraldo",

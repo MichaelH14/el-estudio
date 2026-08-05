@@ -43,6 +43,7 @@ Antes de diseñar NADA, carga lo relevante desde `${CLAUDE_PLUGIN_ROOT}/knowledg
 | Comportamiento de enemigos / NPCs | ia-percibida (define qué debe sentir el jugador ANTES de que el ingeniero elija arquitectura) |
 | Retención / monetización (diseño) | psicologia-retencion-negocio |
 | Precedente histórico | historia-lecciones |
+| Precedente de PRODUCCIÓN (scope, retrasos, crowdfunding) | casos-produccion |
 
 ## Cómo trabajas
 

@@ -2,6 +2,14 @@
 
 Registro de versiones. El plugin se construyó fase por fase; cada fase se investigó, se auditó adversarialmente y se verificó (los operadores de Blender contra el binario real, los comandos de audio ejecutándolos).
 
+## v1.8.4 — 2026-08-05
+Segunda tanda de fuentes traídas por Michael, verificadas antes de escribirlas:
+- **`gamedev/casos-produccion.md`** (archivo nuevo, base gamedev de 15 a 16): destilado de *Blood, Sweat, and Pixels* (Jason Schreier, leído íntegro). Las diez producciones con cifras reales (burn rate de $10.000/persona/mes, presupuestos de Kickstarter, resultados), las cinco trampas recurrentes (fantasma del juego anterior, gravedad del equipo, stretch goals como deuda, cambio de motor a mitad, arte antes que gameplay), mecanismos copiables (peelable scope, el experimento de Kading que llevó el combate de 1,2 a 8,8 sobre 10, la escala 1-10 para desempatar codirección, la política de demos de Brennecke, el recorte como filtro de calidad), el caso del dev solo sin romantizar (Stardew Valley) y por qué las herramientas de desarrollo son el factor número uno.
+- **`pipeline/ia-enemigos.md` §4b**: flow field pathfinding para hordas — invertir la búsqueda partiendo del objetivo, un solo cálculo para cientos de unidades, encarecer las celdas junto a los muros para curvas amplias y contar a los propios enemigos en el coste para que no se apilen.
+- **`unity/ui-unity.md` §8b**: UI con feel — barra de vida por capas (trozo de daño retrasado, shake, flash, punch, números flotantes) y menú con overlay de foco interpolado.
+- **`unity/csharp-patrones.md` §8b**: composición sobre duplicación con un único `Health` que notifica por eventos, a partir del bug real de los enemigos inmortales (`== 0` en vez de `<= 0` en una de las tres copias).
+- **`pipeline/publicacion-tiendas.md`**: canal emergente Unity dentro de Fortnite (Unite Seoul 2026, acceso anticipado anunciado para 2027), marcado como anuncio y no como producto disponible.
+
 ## v1.8.3 — 2026-08-03
 Conocimiento nuevo destilado de tres fuentes que trajo Michael, verificado contra fuentes primarias:
 - **`gamedev/ia-percibida.md`** (archivo nuevo, base gamedev de 14 a 15): la ilusión de inteligencia como objetivo de diseño. Reglas de targeting exactas de los cuatro fantasmas de Pac-Man, F.E.A.R. contra el paper original de Orkin (es GOAP sobre una FSM de tres estados, no una FSM grande — corrige un mito muy repetido; el flanqueo y la pinza eran efectos colaterales, y los barks son la capa que hace visible la intención), Alien: Isolation (director que sabe / alien que busca, desbloqueo de ramas como ilusión de aprendizaje y la salvaguarda de no premiar la muerte del jugador), qué rompe la ilusión, y NPCs con LLM con sus límites reales. Enlazado desde `pipeline/ia-enemigos` y desde los agentes `director`, `disenador` e `ingeniero`.

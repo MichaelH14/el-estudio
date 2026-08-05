@@ -53,6 +53,7 @@ Las bases: `gamedev/` (teoría de diseño), `unity/` (el motor), `pipeline/` (la
 | Tarea | Carga |
 |---|---|
 | Idea nueva / concepto | gamedev: fundamentos-diseno, mecanicas-sistemas, generos, preproduccion → pipeline: pipeline-completo |
+| Estimar tiempo/presupuesto, negociar retraso, crowdfunding | gamedev: casos-produccion (cifras y mecanismos reales) → gamedev: produccion-proceso |
 | Empezar un género concreto | pipeline: recetas-generos + estructura-proyecto |
 | El juego no es divertido | gamedev: fundamentos-diseno, game-feel, mecanicas-sistemas |
 | Se ve/siente muerto | gamedev: game-feel → pipeline: feel-en-unity |

@@ -263,6 +263,49 @@ GC de Unity: Boehm–Demers–Weiser, **no generacional, no compactante** (exist
 
 Verificación: Profiler > CPU > columna GC Alloc sobre el frame de gameplay real; cualquier valor estable ≠ 0 en tu código es un bug de rendimiento. [ver: rendimiento-unity] · [ver: gotchas-unity]
 
+## 8b. Un componente por responsabilidad, no un script por objeto
+
+El error más caro y más común de un proyecto Unity joven: **copiar la misma lógica en cada objeto que la necesita**. El jugador, el enemigo y el barril pueden recibir daño → tres scripts distintos, cada uno con su vida máxima, su `RecibirDaño()` y su `Morir()`.
+
+El fallo real que produce esto (caso documentado en un devlog): en dos scripts la comprobación era `vida <= 0` y en el tercero `vida == 0`. Un ataque que quitaba más vida de la que quedaba dejaba a los enemigos en negativo → **enemigos inmortales**. El bug no está en la lógica: está en que la lógica existe tres veces.
+
+**La forma correcta es la que Unity ya te da: composición.** Un único `Health` que gestiona vida y daño y **avisa por evento** cuando muere; cada objeto añade su reacción propia en otro componente:
+
+```csharp
+[DisallowMultipleComponent]
+public class Health : MonoBehaviour
+{
+    [SerializeField] int maxHealth = 100;
+    public int Current { get; private set; }
+    public event Action<int, int> Changed;    // (actual, máximo) → lo escucha la UI
+    public event Action Died;                 // lo escucha quien reacciona
+
+    void Awake() => Current = maxHealth;
+
+    public void TakeDamage(int amount)
+    {
+        if (amount <= 0 || Current <= 0) return;         // ya muerto: no re-disparar Died
+        Current = Mathf.Max(0, Current - amount);
+        Changed?.Invoke(Current, maxHealth);
+        if (Current == 0) Died?.Invoke();
+    }
+}
+
+// El barril explota, el enemigo suelta loot, el jugador reaparece:
+// cada uno es un componente que escucha, y Health no sabe que existen.
+public class ExplodeOnDeath : MonoBehaviour
+{
+    void Awake()  => GetComponent<Health>().Died += Explode;
+    void OnDestroy() { if (TryGetComponent<Health>(out var h)) h.Died -= Explode; }
+    void Explode() { /* VFX + daño en área + destruir */ }
+}
+```
+
+- **Desuscribirse siempre** en `OnDestroy`/`OnDisable`: si no, el objeto pooleado revive escuchando dos veces y explota por partida jugada (§4).
+- La UI escucha `Changed` y no conoce al jugador — o mejor, pasa por un canal de eventos o una variable-asset (§1) para no acoplar ni siquiera eso.
+- Añadir armadura, resistencias o invulnerabilidad temporal se hace **una vez**, en `Health`, y lo heredan todos.
+- La misma idea vale para `Interactable`, `Damager`, `Lootable`: **un componente = una responsabilidad**, y el objeto es la suma de los que lleva. Es el patrón que Unity espera; pelearse con él es la fuente de la mitad de los bugs raros.
+
 ## 9. GetComponent y caching de referencias
 
 - `GetComponent` en `Update`/hot path: prohibido. Cachear en `Awake` (no en `Start` si otros scripts lo usan desde su propio `Start`).
@@ -324,6 +367,7 @@ void Awake()
 
 ## Fuentes
 
+- **Composición sobre duplicación (§8b)** — devlog de @melenitasdev (Instagram, 2026): el caso del componente de vida copiado tres veces con una comprobación distinta (`== 0` en vez de `<= 0`) que dejaba enemigos inmortales, y la solución con un único `Health` que notifica por eventos. El principio DRY y la composición por componentes son doctrina estándar de Unity; el ejemplo del bug es del devlog.
 - **Awaitable (API) + "Asynchronous programming with async, await y Awaitable"** — docs.unity3d.com 6000.x (Manual: async-await-support, async-awaitable-introduction, async-awaitable-examples; ScriptReference: Awaitable) — la autoridad sobre pooling de Awaitable (nunca await dos veces), continuaciones síncronas y métodos estáticos.
 - **MonoBehaviour.destroyCancellationToken / Application.exitCancellationToken** — docs.unity3d.com 6000.x ScriptReference — los dos tokens nativos de cancelación y sus semánticas exactas.
 - **Coroutines** — docs.unity3d.com 6000.x Manual — condiciones reales de parada de corrutinas (Destroy/SetActive sí, enabled=false no) y yield instructions.

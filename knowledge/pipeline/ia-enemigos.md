@@ -11,7 +11,7 @@ Archivo puente: el QUÉ/POR QUÉ de diseño está en `gamedev/` y los patrones C
 | 3D con suelo navegable (shooter, action, TD 3D) | NavMesh (paquete AI Navigation) | FSM de clases-estado | `NavMeshAgent` |
 | 2D top-down / tilemap | A* Pathfinding Project (de facto) o NavMeshPlus o A* casero | FSM | `Rigidbody2D` + velocity [ver: unity/fisica-unity] |
 | Plataformas 2D (side-view) | Normalmente NINGUNO: patrones fijos + steering | Enum+switch o FSM | `Rigidbody2D` |
-| Enjambre masivo (100+ unidades) | Un path compartido o flow hacia el jugador + separación local | FSM mínima + ticks espaciados (§9) | velocity directa |
+| Enjambre masivo (100+ unidades) | **Flow field** (§4b) o un path compartido + separación local | FSM mínima + ticks espaciados (§9) | velocity directa |
 | Enemigo de arena sin obstáculos | Ninguno: seek/steering directo (§5) | Enum+switch | velocity directa |
 
 Regla: el pathfinding es caro de montar y mantener — confírmalo necesario. Un enemigo que camina hacia el jugador en línea recta con separación cubre a la mitad de los juegos de acción 2D.
@@ -115,6 +115,55 @@ En Unity 6 la navegación vive en el paquete **`com.unity.ai.navigation`** (docs
 - Gotcha documentado: los colliders 2D tienen volumen cero en Z — al hacer graph updates con bounds, expandir los bounds en Z.
 
 **A* casero (cuando aplica):** la referencia canónica es Red Blob Games ("Introduction to A*"): frontier con priority queue, `f = g + h` (costo real desde el origen + heurística al objetivo), heurística Manhattan para 4 direcciones (nunca sobreestimar), reconstrucción por `came_from`. Con `h = 0` es Dijkstra (multi-objetivo); greedy (solo `h`) es rápido pero no óptimo. Lección de Red Blob que importa más que el algoritmo: **el diseño del grafo pesa más que el algoritmo** — menos nodos (grid grueso, waypoints) rinde más que micro-optimizar el loop. Implementación Unity: grid desde `Tilemap.HasTile`/costos por tile, correr A* fuera del hot path (§9), cachear paths entre celdas repetidas, cero allocs por request (buffers reusados [ver: unity/csharp-patrones §8]).
+
+## 4b. Flow field: el pathfinding de las hordas
+
+Cuando **cientos de enemigos van todos al mismo sitio** (el jugador), darle a cada uno su propio A* es tirar cómputo: todos resuelven el mismo problema y llegan a la misma respuesta. Es el caso de los survivor-likes, los tower defense y cualquier horda.
+
+**Se invierte la pregunta.** En vez de calcular el camino *de cada enemigo hasta el jugador*, se empieza **en el jugador y se inunda hacia afuera** (BFS/Dijkstra sobre la grid). El resultado es un campo donde **cada celda guarda a qué celda vecina hay que moverse** para acercarse al objetivo. Los enemigos ya no buscan: leen la celda en la que están y siguen la flecha.
+
+| | A* por enemigo | Flow field |
+|---|---|---|
+| Coste | O(N enemigos × búsqueda) | **1 cálculo**, lo lean 10 o 10.000 |
+| Cuándo recalcular | Cada vez que uno necesita repath | Cuando se mueve el objetivo o cambia el mapa |
+| Objetivos distintos | Gratis | Un campo **por objetivo** (por eso no sirve si cada enemigo va a su sitio) |
+| Memoria | Baja | Una dirección + un coste por celda |
+
+```csharp
+// Generación del campo: BFS desde el objetivo hacia afuera (grid uniforme)
+// cost[] = coste acumulado hasta el objetivo; flow[] = índice del vecino al que ir
+void BuildFlowField(int goalIndex)
+{
+    for (int i = 0; i < cost.Length; i++) { cost[i] = int.MaxValue; flow[i] = -1; }
+    cost[goalIndex] = 0;
+    var frontier = new Queue<int>();          // reusar el buffer, no crear por frame
+    frontier.Enqueue(goalIndex);
+
+    while (frontier.Count > 0)
+    {
+        int current = frontier.Dequeue();
+        foreach (int neighbor in Neighbors(current))
+        {
+            if (!IsWalkable(neighbor)) continue;
+            int next = cost[current] + StepCost(neighbor);     // StepCost = 1 + penalizaciones
+            if (next >= cost[neighbor]) continue;
+            cost[neighbor] = next;
+            flow[neighbor] = current;                          // apunta hacia el objetivo
+            frontier.Enqueue(neighbor);
+        }
+    }
+}
+// Cada enemigo, por frame: mirar su celda y moverse hacia flow[celda]. Cero búsqueda.
+```
+
+**Los dos trucos que lo convierten en diseño, no solo en optimización:**
+
+- **Mentirle al campo cerca de las paredes.** Subir el coste de las celdas pegadas a muros hace que la horda **trace curvas más amplias** en vez de rozar las esquinas. Se ve mucho mejor y no cuesta nada: es un `StepCost` mayor en esas celdas.
+- **Meter a los propios enemigos en el coste.** Si cada enemigo suma coste a su celda, el campo los reparte solo y **dejan de apelotonarse** — separación emergente sin steering aparte (§5).
+
+**Cuándo NO usarlo:** pocos enemigos (el A* individual sobra), o enemigos con objetivos distintos entre sí (necesitarías un campo por objetivo). Con NavMesh 3D y decenas de agentes, `NavMeshAgent` ya resuelve bien; el flow field brilla en **grid 2D con cientos de unidades**.
+
+La frase que lo resume, del devlog que lo popularizó: **"no preguntes lo mismo doscientas veces, respóndelo una vez."**
 
 ## 5. Steering: debajo o en lugar del pathfinding
 
@@ -232,6 +281,7 @@ void Update()
 - [ ] NavMeshAgent + Rigidbody dinámico jamás juntos; Rigidbody kinematic para triggers/hits.
 - [ ] Obstáculo que bloquea rutas de forma sostenida → `NavMeshObstacle` con Carve; en movimiento constante → sin carve.
 - [ ] 2D: A* Pathfinding Project (grid 2D + Use 2D Physics) o NavMeshPlus; A* casero solo en grids chicos con la receta Red Blob (f = g + h, Manhattan en 4-dir).
+- [ ] Cientos de enemigos hacia UN objetivo → flow field (§4b), no A* por unidad; sube el coste junto a los muros para curvas amplias y mete a los propios enemigos en el coste para que no se apilen.
 - [ ] Steering manual (seek/separación) para movimiento custom y enjambres; con NavMeshAgent la separación ya la hace el avoidance.
 - [ ] Percepción = distancia → ángulo → raycast, en ese orden, desde altura de ojos, con LayerMask y sin triggers.
 - [ ] Sigilo/alerta: medidor de sospecha visible + última posición conocida + estado Search antes de rendirse.
@@ -277,5 +327,6 @@ void Update()
 - **"The AI Systems of Left 4 Dead"** — Michael Booth, Valve (deck GDC 2009, PDF oficial leído) — reactive path following con look-ahead, Survivor Intensity y sus triggers exactos, ciclo Build Up/Sustain Peak/Peak Fade/Relax con tiempos (3–5 s, 30–45 s), pacing ≠ dificultad, bosses fuera del director.
 - **Steering Behaviors for Autonomous Characters** — Craig Reynolds (red3d.com/cwr/steer, paper 1999 + OpenSteer) — vocabulario canónico: seek/flee, pursue/evade, wander, separation/alignment/cohesion, obstacle avoidance.
 - **Game AI Pro (gameaipro.com, capítulos gratuitos)** — Champandard & Dunstan (Behavior Tree Starter Kit), Graham (Utility Theory), Dill (Dual-Utility), Hanlon & Watts (Dragon Age Inquisition), Walsh (Splinter Cell Blacklist perception), Welsh (Crytek Target Tracks), Sunshine-Hill (LOD Trader), Zubek (1000 NPCs at 60 FPS) — el canon de BT, utility, percepción y AI LOD.
+- **Flow field pathfinding** — devlog de @cosmic_ostrich (Cosmic Ostrich, Instagram 2026, sobre su juego Dead Pixel en Unity): invertir la búsqueda partiendo del objetivo, un solo cálculo para toda la horda, encarecer celdas junto a muros para curvas más amplias y contar a los propios enemigos en el coste para evitar apelotonamiento. ⚠️ Devlog, no fuente académica; la técnica es estándar (Dijkstra/BFS sobre grid) y el código de §4b es la implementación canónica.
 - **Introduction to A*** — Red Blob Games (Amit Patel) — BFS/Dijkstra/greedy/A*, f = g + h, heurísticas de grid, "el diseño del grafo importa más que el algoritmo".
 - **Base sintetizada:** [ver: gamedev/ia-percibida] (inteligencia percibida: la capa de diseño sobre todo lo de aquí), [ver: unity/csharp-patrones] (FSM base, pooling, runtime sets, event channels, cero allocs), [ver: unity/fisica-unity] (queries/LayerMask/triggers, Rigidbody kinematic, NonAlloc), [ver: gamedev/mecanicas-sistemas] (tablas de pesos, percepción del azar), [ver: gamedev/animacion] + [ver: gamedev/game-feel] (telegraphing, anatomía de ataque), [ver: gamedev/fundamentos-diseno] (flow/pacing), [ver: gamedev/level-design] (encounter design).

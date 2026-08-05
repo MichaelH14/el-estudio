@@ -159,6 +159,36 @@ Ventajas: un solo canvas, tamaño constante en pantalla, fácil de clampear a lo
 
 **Opción C — UI Toolkit World Space (desde Unity 6.2):** Panel Settings con render mode World Space posiciona documentos UI Toolkit en la escena 3D, con configuración de input propia (Panel Input Configuration). Verificado: la página existe en el manual 6000.2 y no existe en 6000.0/6000.1 — no usar este camino si el proyecto está en Unity 6.0/6.1.
 
+## 8b. UI con feel: la barra de vida y el menú que se sienten bien
+
+La UI también tiene game feel [ver: gamedev/game-feel]. Dos recetas concretas, en el orden en que se construyen; cada capa se nota aunque las anteriores ya estén.
+
+### Barra de vida con peso
+
+Una barra que salta de 100 a 60 al instante no comunica nada. Las capas, acumulativas:
+
+1. **Vaciado suave.** No asignes el valor nuevo: interpola hacia él (`Mathf.Lerp` por `deltaTime`, o `SmoothDamp`). El ojo necesita ver el movimiento para entender la magnitud.
+2. **Trozo de daño (la técnica clave).** **Dos barras superpuestas**: la de delante baja al instante, la de detrás — en otro color, típicamente blanco o rojo apagado — baja **con retardo**. El hueco entre ambas *es* la lectura visual de cuánto te acaban de quitar. Es lo que hacen los juegos de pelea y casi todos los RPG de acción.
+3. **Shake** de la barra mientras dura el golpe (unos pocos píxeles, decayendo). Convierte un cambio numérico en un impacto.
+4. **Flash blanco** sobre el fill en el instante del daño.
+5. **Punch de escala** (~1.05 → 1.0 con easing) encima de todo. Sutil; si se nota, te pasaste.
+6. **Números de daño flotantes** que nacen en la posición del último golpe, suben y se desvanecen. Poolear siempre — un `Instantiate` por golpe con horda es GC garantizado (§9).
+7. **Estados de color por umbral** (verde → ámbar → rojo), y a poca vida un pulso lento: informa sin texto y en cualquier idioma.
+
+Notas de implementación: `Image.type = Filled` o escala X con **pivot 0** para que vacíe hacia el lado correcto (§4); las dos barras son dos `Image` en el mismo RectTransform, con la retrasada **detrás**; el shake mueve el RectTransform padre, no el fill (si no, se descuadra el relleno).
+
+### Menú con foco vivo
+
+1. **Overlay de foco que se desplaza**: en vez de encender y apagar un marco por botón, ten **un solo** highlight que **interpola** su posición y tamaño hasta el botón activo. Suave, no instantáneo — es lo que hace que un menú se sienta "caro".
+2. **Escalar ligeramente** el botón enfocado (y su icono).
+3. **Intercambiar el icono** por su versión "seleccionada" al enfocar.
+4. **Flotación en idle**: los elementos se mecen con un seno de amplitud mínima. Un menú completamente quieto se lee como una imagen.
+5. **Conectores entre botones** que **pulsan** hacia el botón enfocado: comunican la relación entre opciones y dan movimiento sin ruido.
+6. **9-slice** para paneles y bocadillos de diálogo, para que escalen sin deformarse (`Image.type = Sliced` con bordes definidos en el sprite).
+7. Partículas o degradado de fondo, muy bajos en contraste. Es lo último y lo primero que se corta.
+
+⚠️ Todo esto suma draw calls y animación: métrico en móvil antes de darlo por bueno (§9), y respeta el ajuste de accesibilidad de "reducir movimiento" si el juego lo tiene [ver: gamedev/ux-ui-onboarding].
+
 ## 9. Optimización uGUI
 
 Modelo mental verificado (guía oficial "Optimizing Unity UI"): **cuando cualquier elemento dibujable de un Canvas cambia, el Canvas entero rehace su batch** — analiza todos los elementos, no solo el que cambió. Markers de Profiler: `Canvas.BuildBatch` y `Canvas.SendWillRenderCanvases`.
@@ -264,6 +294,7 @@ public class MenuController : MonoBehaviour
 
 ## Fuentes
 
+- **UI con feel (§8b)** — devlogs de @miisan (Instagram, 2026): receta por capas de una barra de vida con peso (vaciado suave, trozo de daño retrasado, shake, flash, punch, números flotantes, estados de color) y de un menú con overlay de foco interpolado, swap de iconos, flotación en idle, conectores que pulsan y 9-slice. ⚠️ Devlogs de un motor propio en C++/Lua: la técnica es agnóstica y aquí está traducida a uGUI con APIs reales de Unity.
 - Comparison of UI systems in Unity — Unity Manual 6000.2 (docs.unity3d.com) — la posición oficial de Unity sobre uGUI vs UI Toolkit vs IMGUI y la tabla de capacidades que faltan en UI Toolkit.
 - Canvas — paquete com.unity.ugui 2.0, Unity Manual — render modes, orden de dibujo, canales de vértice y Additional Shader Channels.
 - Canvas Scaler — paquete com.unity.ugui 2.0, Unity Manual — modos de escala, reference resolution, screen match mode.

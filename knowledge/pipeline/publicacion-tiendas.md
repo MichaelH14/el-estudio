@@ -17,6 +17,18 @@ Datos duros con fecha: verificados contra docs oficiales el **2026-07-18**. Fees
 
 itch.io es la única sin barrera: sube el build y véndelo hoy. Por eso es el canal de playtests y jams [ver: pipeline-completo], y también un launch "soft" real antes de Steam.
 
+### Canal emergente: publicar un juego Unity dentro de Fortnite
+
+⚠️ **Estado a agosto 2026: anunciado y demostrado, NO disponible todavía.** Unity y Epic anunciaron en Unite Seoul 2026 la primera demo funcional de un juego Unity **renderizando nativamente dentro de Unreal Engine**: *Fantasy Kingdom*, con Unity encargándose de gameplay, física y NPCs, y Unreal del renderizado y la iluminación, sincronizados en tiempo real. **Acceso anticipado previsto para 2027**, por formulario de interés.
+
+Por qué importa como canal: permitiría publicar en Fortnite —**más de 500 millones de cuentas registradas**— y entrar en su Creator Economy **sin portar el proyecto a Unreal**, siguiendo en C# y con el flujo de trabajo de Unity.
+
+Cómo tratarlo hoy, sin hacerse ilusiones:
+- **No planifiques un lanzamiento sobre esto.** No hay fecha firme, ni condiciones de reparto publicadas para este caso, ni requisitos técnicos conocidos.
+- Sí conviene **no cerrarse la puerta**: mantener la lógica de juego desacoplada del renderizado y de las suposiciones de plataforma (input, resolución, entrada táctil) es buena arquitectura de todos modos [ver: unity/arquitectura-unity].
+- La audiencia de Fortnite es mayoritariamente **joven y de sesión social**; encaja con ciertos géneros y con ninguno otro. Antes de emocionarse, el filtro de mercado de siempre [ver: movil/mercado-movil].
+- Verificar el estado real antes de mencionarlo en cualquier plan: es exactamente el tipo de dato que caduca.
+
 ## 2. Google Play Console — del build firmado a producción
 
 ### Cuenta y el peaje de las cuentas personales
@@ -233,6 +245,7 @@ Reglas duras de Valve: en las capsules **solo el título del juego** (sin quotes
 
 ## Fuentes
 
+- **Unity dentro de Fortnite** — anuncio oficial de Unity y Epic Games (Unite Seoul 2026; unity.com/news y unrealengine.com/news, cuenta oficial @unity): demo *Fantasy Kingdom* con un juego Unity renderizando nativamente en Unreal, Unity para gameplay/física/NPCs y Unreal para render/luz, sincronizados; acceso anticipado anunciado para 2027; Fortnite declarado con 500M+ cuentas registradas. ⚠️ Anuncio, no producto disponible — verificar estado antes de usarlo en un plan.
 **Docs oficiales de tiendas (consultadas 2026-07-18):**
 - Steam Direct — partner.steamgames.com/steamdirect — fee $100/producto, recuperable a $1,000 AGR, 30 días de espera, coming soon ≥2 semanas, review 1-5 días, W-9/W-8BEN.
 - Steamworks: Store Graphical Assets — partner.steamgames.com/doc/store/assets/standard — dimensiones de capsules, ≥5 screenshots 1920×1080 solo-gameplay, reglas de texto.
