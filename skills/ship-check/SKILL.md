@@ -45,3 +45,11 @@ Tabla: ítem → estado (✅/❌/N/A) → evidencia (qué comando/prueba lo conf
 - Evidencia o no cuenta: cada ✅ lleva el cómo se comprobó.
 - El build que se prueba es el build que se publica (mismo artefacto, no "uno igual").
 - Si algo falla en el guantelete, se arregla y SE REPITE el guantelete completo de esa sección — un fix puede romper otra cosa.
+
+## Material de marketing: la regla innegociable
+
+Todo lo que salga en tráilers, capturas o demos debe ser **material que está en el juego que vas a publicar**. No "representativo": el mismo. Enseñar algo que no existe todavía es cómo se ganan las peores reseñas de lanzamiento, y las producciones que lo hicieron (Halo Wars en E3, Dragon Age en PAX) tiraron meses de trabajo en demos que nadie volvió a usar [ver: gamedev/casos-produccion §6].
+
+- [ ] Cada plano del tráiler existe en la build que se sube.
+- [ ] Ninguna captura es de una versión con features que se cortaron.
+- [ ] Si algo se ve mejor en la demo que en el juego, se arregla el juego o se cambia la demo.

@@ -45,6 +45,7 @@ Antes de opinar o diseñar NADA, carga el conocimiento relevante:
 | `/aprender-asset` | Analizar un asset de Unity y extraer sus convenciones |
 | `/memoria-juego` | Mantener GDD + CHECKPOINT + CORTE para retomar sesiones sin perder contexto |
 | `/validar-mercado` | Auditar si un concepto tiene señal comercial antes de producir |
+| `/medir-diversion` | Convertir "no es divertido" en una nota que sube ronda a ronda |
 
 ## Mapa de carga rápida
 
@@ -104,3 +105,13 @@ Flujo típico: idea → `disenador` (loop+GDD) → `artista-3d`/`animador` (asse
 - **Prototipo > documento.** Un GDD de una página y un prototipo gris valen más que 20 páginas de diseño.
 - **Verifica en el juego real.** "Compila" no es "funciona". Prueba el build, mira el feel, después declara listo.
 - **Fuentes.** Cuando cites una práctica del conocimiento, di de qué archivo sale.
+
+## Cinco reglas que vienen de producciones reales
+
+Destiladas de [ver: gamedev/casos-produccion]. Aplican a CADA proyecto que dirijas:
+
+1. **Solo se enseña lo que va a shipear.** Toda demo, tráiler o captura debe salir de material que estará en el juego final (política de Brennecke, Obsidian). Las demos falsas de Halo Wars y Dragon Age costaron meses y crearon expectativas imposibles. Corolario: la mejor demo suele ser el primer cuarto de hora del juego, que además es lo que más pulido necesita.
+2. **Estima solo lo que ya probaste.** En preproducción no se estima: se descubre. Cuando el core está probado y el look definido, la producción SÍ se vuelve predecible. Si alguien te pide una fecha antes de eso, la respuesta honesta es un alcance por capas (`Docs/SCOPE.md`), no un número.
+3. **Cuenta con el retraso desde el día uno.** Los diez casos del libro se retrasaron. Un calendario sin hueco vacío al final no es optimista, es falso: reserva tiempo explícito para iterar, que es donde vive el último 1% (y ese 1% tardó casi un año en StarCraft II).
+4. **Nombra la gravedad antes de elegir el proyecto.** Lo que el equipo sabe hacer decide el juego que sale, quieras o no (Destiny quería ser fantasía en tercera persona y acabó siendo Halo). Con un dev solo, la gravedad son sus habilidades actuales. Dilo en voz alta al arrancar, no al descubrirlo.
+5. **Distingue lo que falló por tiempo de lo que falló por decisión.** Es la trampa del juego anterior: reaccionar a una crítica sin separar las dos causas lleva a meter "todo menos el fregadero" (Dragon Age: Inquisition) o a congelarse por respeto al clásico (Diablo III). Si hay que romper un dogma, monta una rama sin ese peso y experimenta ahí.

@@ -16,3 +16,16 @@ Este overlay prepara un proyecto Unity para trabajar con El Estudio.
 - `CHECKPOINT.md` dice qué está verificado y qué no.
 - `CORTE.md` mantiene el scope bajo control.
 - `ASSET_PROVENANCE.md` se copia por cada asset externo o generado.
+
+## Herramientas de iteración (menú `El Estudio` en el editor)
+
+`Assets/ElEstudio/Editor/DevTools.cs` añade lo que más acelera el bucle cambio→verlo,
+que es la métrica de productividad que más pesa en un proyecto de juego:
+
+- **Arrancar siempre desde la escena inicial** — al dar Play carga la escena 0 de Build
+  Settings aunque estés editando otra. Se acabó el "peta porque no se inicializó nada".
+- **Velocidad x0.25 / x1 / x4** (Alt+1/2/3 en Play mode) — para no esperar animaciones ni timers.
+- **Borrar progreso guardado** — probar la primera partida sin buscar dónde vive el save.
+- **Abrir CHECKPOINT.md** sin salir del editor.
+
+Es código de editor: no entra en el build.

@@ -33,11 +33,12 @@ Compatibilidad: si `${CLAUDE_PLUGIN_ROOT}` no existe, usa la raíz del repo/plug
 - Sigue el checklist de arranque de pipeline-completo.md paso a paso (versión LTS, plantilla URP, settings, git+LFS, estructura de carpetas de estructura-proyecto.md).
 - Si el repo trae `tools/scaffold_unity_day0.py`, úsalo para crear `GDD.md`, `CHECKPOINT.md`, `CORTE.md`, `.gitattributes`, `.gitignore` y smoke test base.
 - Crea también `CHECKPOINT.md` (estado + decisiones + qué sigue) — se actualiza SIEMPRE al final de cada sesión de trabajo.
+- Rellena `Docs/SCOPE.md` (alcance por capas) **antes de que haya prisa**: qué sale sí o sí, qué se añade con un mes más, y qué se corta si no hay ni un día. Lo que se prometa en público sale solo de la capa 0.
 - Salida: proyecto compila, primer commit hecho.
 
 ### 4. Prototipo gris del core loop
 - Solo el loop, en greybox, sin arte ni menús (receta del género como guía técnica).
-- Criterio de salida: el toy se siente bien Y el loop completo es jugable. Si tras iterar no divierte en gris → recomienda kill/pivot con honestidad (preproduccion.md: kill criteria).
+- Criterio de salida: el toy se siente bien Y el loop completo es jugable. **No lo decidas tú solo**: pasa `/medir-diversion` con gente de fuera y mira si la nota sube ronda a ronda. Tras años (o semanas) mirando lo mismo se pierde la objetividad — le pasó al autor de Stardew Valley, que creyó que su juego era basura hasta días antes de lanzarlo. Si tras iterar no divierte en gris → recomienda kill/pivot con honestidad (preproduccion.md: kill criteria).
 
 ## Reglas
 - Verifica en el editor/build real cada etapa antes de declararla lista (consola sin errores, play mode probado — ver `${CLAUDE_PLUGIN_ROOT}/knowledge/unity/unity-mcp-flujo.md` si hay MCP conectado).

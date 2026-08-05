@@ -13,13 +13,17 @@ Compatibilidad: si `${CLAUDE_PLUGIN_ROOT}` no existe, usa la raíz del repo/plug
 
 1. `${CLAUDE_PLUGIN_ROOT}/knowledge/gamedev/game-feel.md` — la teoría y el repertorio completo
 2. `${CLAUDE_PLUGIN_ROOT}/knowledge/pipeline/feel-en-unity.md` — cada técnica con SU implementación Unity (tweens, Impulse, partículas, pooling)
-3. Si hay animaciones flojas: `${CLAUDE_PLUGIN_ROOT}/knowledge/gamedev/animacion.md`
-4. Si el audio no acompaña: `${CLAUDE_PLUGIN_ROOT}/knowledge/gamedev/audio.md` + `${CLAUDE_PLUGIN_ROOT}/knowledge/unity/audio-unity.md`
+3. Para el feel de la UI (barra de vida, menús, números de daño): `${CLAUDE_PLUGIN_ROOT}/knowledge/unity/ui-unity.md` §8b
+4. Si hay animaciones flojas: `${CLAUDE_PLUGIN_ROOT}/knowledge/gamedev/animacion.md`
+5. Si el audio no acompaña: `${CLAUDE_PLUGIN_ROOT}/knowledge/gamedev/audio.md` + `${CLAUDE_PLUGIN_ROOT}/knowledge/unity/audio-unity.md`
 
 ## Flujo
 
 ### 1. Auditoría (antes de tocar nada)
 Juega/observa el juego real y pasa el diagnóstico de game-feel.md en orden: (1) latencia input→respuesta, (2) curvas de movimiento/física, (3) capa de polish. Lista qué falta por acción del jugador: cada verbo (saltar, golpear, recoger, morir) debe tener feedback visual + sonoro + de cámara proporcional a su importancia.
+
+### 1b. La UI también tiene feel
+Casi siempre olvidada, y es donde el jugador mira: una barra de vida que salta de golpe no comunica nada. Aplica la receta por capas de [ver: unity/ui-unity §8b] — vaciado suave, trozo de daño retrasado, shake, flash, punch, números flotantes pooleados — y el foco interpolado en menús. Barata de hacer y se nota en la primera partida.
 
 ### 2. Plan en orden de impacto
 El checklist ejecutable de feel-en-unity.md: primero lo que más se siente (input feel, hit feedback del verbo principal, SFX por evento), después cámaras, después partículas/flashes/números, al final los detalles. Presenta el plan en corto.
@@ -33,6 +37,7 @@ El checklist ejecutable de feel-en-unity.md: primero lo que más se siente (inpu
 El feel solo se evalúa JUGANDO: build/play real, no lectura de código. Compara antes/después con el usuario. Los números de tuning finales quedan documentados en el CHECKPOINT.
 
 ## Reglas
+- **Si el loop no divierte, el juice no lo salva.** Antes de gastar un pase entero, comprueba de qué hablamos: pasa una ronda de `/medir-diversion`. Si la nota no sube tocando percepción, el problema es diseño y hay que decirlo — no seguir añadiendo partículas.
 - Nunca cambies reglas de gameplay en un juice pass (daño, velocidades de diseño) — solo percepción. Si detectas un problema de diseño, repórtalo aparte.
 - Pooling obligatorio para todo lo que spawnea en caliente (partículas, números, audio sources).
 - Sonido = 50% del feel: ningún pase está completo si los eventos clave no suenan.

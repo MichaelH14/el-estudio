@@ -21,6 +21,7 @@ MEMORY_TEMPLATE_ROOT = REPO_ROOT / "templates" / "game-memory"
 EXTRA_TEMPLATE_FILES = [
     REPO_ROOT / "templates" / "asset-provenance" / "ASSET_PROVENANCE.md",
     REPO_ROOT / "templates" / "analytics" / "ANALYTICS_TAXONOMY.md",
+    REPO_ROOT / "templates" / "scope-peelable" / "SCOPE.md",
 ]
 
 
@@ -135,6 +136,7 @@ def main() -> int:
     print(f"Skipped: {skipped_count}")
     print(f"Test framework: {ensure_test_framework(destination_root)}")
     print("Next: open in Unity, run Day0SmokeTest, then update CHECKPOINT.md with evidence.")
+    print("Iteracion rapida: menu 'El Estudio' en el editor (arranque desde escena inicial, velocidad, reset de progreso).")
     return 0
 
 

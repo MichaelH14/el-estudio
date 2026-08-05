@@ -1,6 +1,6 @@
 # El Estudio — Plan maestro
 
-> **ESTADO: ✅ COMPLETO — v1.8.4 (2026-08-05).** Todas las fases (bloques A, B, C, D + arte 2D, VFX, audio) están construidas: 161 archivos de conocimiento en 16 bases, 7 agentes, 8 skills. Este documento queda como registro histórico del plan y como lista de huecos/ideas pendientes para la mejora continua. La documentación de uso está en `README.md`. La infraestructura de dogfooding ya existe (`tools/`, `templates/`, `examples/`); el gate restante antes de v1.9 es construir un juego completo desde una instalación limpia del plugin y guardar toda la evidencia.
+> **ESTADO: ✅ COMPLETO — v1.8.5 (2026-08-05).** Todas las fases (bloques A, B, C, D + arte 2D, VFX, audio) están construidas: 161 archivos de conocimiento en 16 bases, 7 agentes, 9 skills. Este documento queda como registro histórico del plan y como lista de huecos/ideas pendientes para la mejora continua. La documentación de uso está en `README.md`. La infraestructura de dogfooding ya existe (`tools/`, `templates/`, `examples/`); el gate restante antes de v1.9 es construir un juego completo desde una instalación limpia del plugin y guardar toda la evidencia.
 
 > Plugin de Claude Code que convierte a un agente IA en un estudio de videojuegos completo (diseño + Unity + arte + audio), diseñado para funcionar con cualquier modelo. La inteligencia vive en los archivos, no en el modelo.
 

@@ -24,6 +24,15 @@ Este contrato convierte el “estudio” en un flujo verificable. El director no
 - Mercado: competidores, canal, monetización, riesgos y experimento barato.
 - Memoria: `CHECKPOINT.md` actualizado con ✅, ⚠️ y ⬜.
 
+## Qué cuenta como "terminado"
+
+Heredado de producciones reales [ver: gamedev/casos-produccion]:
+
+- Una feature **al 90% no está terminada**. Diez features al 90% son cero features entregadas.
+- "Funciona en prototipo" es un estado distinto de "terminado": faltan efectos, sonido, animación, UI y casos borde. Presupuesta **días para el prototipo, meses para completarlo**.
+- Antes de abrir una capa nueva de alcance, la anterior tiene que estar cerrada y probada (`Docs/SCOPE.md`).
+- La diversión también se cierra con evidencia: una serie de `/medir-diversion` que sube, no la opinión del que lo hizo.
+
 ## Reglas de bloqueo
 
 - Sin core loop no hay Unity.
@@ -31,3 +40,5 @@ Este contrato convierte el “estudio” en un flujo verificable. El director no
 - Sin evidencia no hay ✅.
 - Sin `CORTE.md` el scope no está controlado.
 - Sin QA, el director no usa la palabra terminado.
+- Sin material real, no hay demo pública: solo se enseña lo que va a shipear.
+- Si el bucle cambio→verlo se mide en minutos, se arregla antes de seguir produciendo.

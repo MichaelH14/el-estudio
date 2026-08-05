@@ -2,7 +2,7 @@
 
 Plugin de Claude Code que convierte a un agente de IA en un **estudio de videojuegos completo** — diseño, programación en Unity, arte 3D y 2D, animación, audio y publicación — desde la idea hasta la tienda.
 
-**Estado:** ✅ Completo · **v1.8.4** · 161 archivos de conocimiento en 16 bases · 7 agentes · 8 skills.
+**Estado:** ✅ Completo · **v1.8.5** · 161 archivos de conocimiento en 16 bases · 7 agentes · 9 skills.
 
 ---
 
@@ -82,6 +82,7 @@ El plugin es un estudio con roles. El `director` orquesta y enruta; los especial
 | `/aprender-asset` | Analizar un asset de Unity y extraer sus convenciones |
 | `/memoria-juego` | Mantener el GDD + CHECKPOINT de un juego para retomarlo en cualquier sesión |
 | `/validar-mercado` | Auditar mercado, competencia, canal y go/no-go antes de producir |
+| `/medir-diversion` | Rondas de playtest medido: convierte "no es divertido" en una nota que sube |
 
 ## Capacidades verificadas contra herramientas reales
 
